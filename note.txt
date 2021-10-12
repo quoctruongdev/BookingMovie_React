@@ -1,0 +1,329 @@
+======
+tạo project react
+0.create-react-app tenproject
+======
+install jquery,popper,bootstrap
+1. chay command
+npm install jquery popper.js bootstrap@4.3.1 --save
+2. tại file index.js của react
+import "bootstrap/dist/css/bootstrap.min.css";
+import "jquery/dist/jquery.min.js";
+import "popper.js/dist/umd/popper.min.js";
+import "bootstrap/dist/js/bootstrap.min.js";
+======
+0. install redux
+npm install redux react-redux --save
+======
+cài đặt React Router
+1. chạy command
+npm install react-router-dom --save
+=====
+cài đặt axios
+npm install axios --save
+=====
+1. Tạo store
+- Vào index.js của react (file lớn nhất)
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+
+const store = createStore();
+
+- bọc tag <App/> trong cặp thẻ <Provider></Provider>
+<Provider store={store}>
+	<App/>
+</Provider>,
+document.getElementById("root")
+
+2. Tạo folder redux>reducers>index.js
+3. Tạo reducer trong file redux>reducers>index.js
+import {combineReducers} from "redux";
+
+const rootReducer = combineReducers({
+	//List reducers khai báo ở đây
+});
+
+export default rootReducer ;
+
+4. import rootReducer vào index.js của react
+import rootReducer from "./redux/reducers";
+
+- truyền tham số cho createStore
+const store = createStore(rootReducer );
+
+5. Tạo child reducer trong redux>reducers>childReducer.js
+
+Child Reducer sẽ chứa các state, là các thông tin có thay đổi trong quá trình sử dụng trang web
+=====
+//tạo state mặc định
+const initState = {
+	userList: data,
+	keyword: "",
+	userEdit: null
+}
+//tạo child reducer
+const userReducer = (state = initState, action) => {
+	//store sẽ trả state về cho các component nên trong child Reducer sẽ return state
+	//trong redux khi so sánh object sẽ bị tham chiếu dẫn đến không biết state có đổi mới hay chưa, nên khi return phải là return {...state};
+	// trong đây sẽ viết xử lý của các action
+}
+
+export default userReducer;
+=====
+
+6. Import Child Reducer vào Root Reducer
+import userReducer from "./user";
+
+const rootReducer = combineReducers({
+	userReducer: userReducer,
+});
+
+■ Redux Dev Tools extension
+giúp xem thông tin store trong redux
+
+Để xem thông tin store, vào trang GIT của Redux Dev Tools extension > With Redux add thêm dòng bên dưới vào createStore
+
+ const store = createStore(
+   rootReducer, /* preloadedState, */
++  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+ );
+
+========
+Trao đổi dữ liệu với store
+1) phải import {connect} from "react-redux"; trong component con
+2) viết hàm mapStateToProps hoặc mapDispatchToProps để trao đổi với store
+========
+■ mapStateToProps: truyền props từ store cho các component, được viết trong các component
+//state là tham số mặc định đại diện cho thông tin của root reducer
+//khi muốn lấy thông tin từ child reducer (userReducer) thì phải lấy từ state.userReducer.xxx
+const mapStateToProps = (state) => {
+  return {
+    /**
+     * key: value
+     * -key: đại diện cho tên props
+     * -value: lấy giá trị từ rootReducer
+     */
+     listUser: state.userReducer.listUser,
+     keyword:state.userReducer.keyword,
+ };
+};
+
+export default connect(mapStateToProps, null) (Users);
+
+========
+■ mapDispatchToProps
+
+Để thực hiện một action, cần gửi action lên root Reducer sử dụng mapDispatchToProps, được viết trong component
+1) Định nghĩa trong component
+const mapDispatchToProps = (dispatch) => {
+  return{
+    /**
+     * key: value
+     * -key: đại diện cho tên props
+     * -value: là 1 phương thức
+     */
+     callEditForm: (user)=>{
+      //  Tao action
+      const action ={
+        type: "SELECT",
+        payload: user
+      };
+      // Gửi action vào store
+      dispatch(action);
+     }
+  }
+}
+
+export default connect(null, mapDispatchToProps) (UserItem);
+
+2) Viết xử lý action trong child reducer tương ứng
+const userReducer = (state = initstate, action) => {
+  switch (action.type) {
+    case "GET_KEYWORD": {
+      state.keyword = action.payload;
+      return { ...state };
+    }
+    default: {
+      return { ...state };
+    }
+  }
+};
+========
+React Nâng cao
+■ action creater
+1) Tạo folder action trong folder redux
+2) Tạo file index.js trong folder action
+3) Tạo hàm chứa action gọi là action creater
+const actUserDelete = (user) => {
+	return {
+		type: "DELETE_USER",
+		payload: user
+	};	
+}
+export {actUserDelete, <action creater khác> };
+
+4) trong file component con
+- import action creater
+import {actUserDelete} from "./../redux/actions";
+- chỉnh sửa hàm mapDispatchToProps của component con
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    /**
+     * key: value
+     * -key: đại diện cho tên props
+     * -value: là 1 phương thức
+     */
+     getUserDelete: (user)=>{
+      dispatch(actUserDelete(user));
+     }
+  }
+}
+
+■ quản lý type của action
+1) Tạo folder constants trong folder redux
+2) Tạo file index.js trong folder constants
+3) Định nghĩa các constant type trong file redux>constants>index.js
+export const DELETE_USER = "DEL_USER";
+4) Vào file redux>action>index.js
+import {DELETE_USER} from "./../constants";
+nếu nội dung import quá nhiều có thể dùng cú pháp:
+import * as ActionType from "./../constants";
+5) Chỉnh sửa type của action creater dùng constant
+-nếu import trực tiếp const type
+const actUserDelete = (user) => {
+	return {
+		type: DELETE_USER,
+		payload: user
+	};	
+}
+- nếu import *
+const actUserDelete = (user) => {
+	return {
+		type: ActionType.DELETE_USER,
+		payload: user
+	};	
+}
+
+6) Chỉnh sửa type của action trong switch case của Child Reducer
+
+==========
+cài đặt React Router
+1. chạy command
+npm install react-router-dom --save
+2. tại file App.js
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+
+//bọc các component trong cặp thẻ <BrowserRouter></BrowserRouter>
+function App(){
+  return (
+    <BrowserRouter>
+       //Home Page: localhost:3000
+       //dấu "/" tương đương "localhost:3000
+       //bộ định tuyến sẽ gọi trang HomePage với đường dẫn "/"
+       //exact, path, component : là các prop
+       //exact: ý nghĩa là chỉ khi đường dẫn chính xác là localhost:3000 thì Home Page mới hiển thị
+       <Route path="/" component{HomePage}/>
+
+	{/* Trang không tồn tại */}
+      <Route path="" component={PageNotFound}/>
+    </BrowserRouter>
+  );
+}
+
+====
+====
+Route: định nghĩa path cho các trang
+Switch: giúp giải quyết trang Page Not Found không hiển thị kèm các trang khác: 
+trang Page Not Found phải nằm cuối cùng trong thẻ Switch
+Và Page Not Found để gọi trong App.js
+====
+Cải tiến code:
+1. tạo file src>route>index.js
+2. định nghĩa route
+import HomePage from "./../containers/HomeTemplate";
+
+const routeHome = [
+//object cho HomePage
+{
+    //định nghĩa các prop của route
+    exact: true, //có truyền prop exact
+    path: "/",
+    component: "HomePage",
+},
+{
+    //định nghĩa các prop của route
+    exact: true, //có truyền prop exact
+    path: "/:id", //cú pháp truyền parameter
+    component: "HomePage",
+}
+];
+const routeAdmin = [];
+
+export function renderRouteHome() {
+  return routeHome.map((route, index) => {
+    return (
+      <Route
+        key={index}
+        exact={route.exact}
+        path={route.path}
+        component={route.component}
+      />
+    );
+  });
+}
+
+3. Vào App.js
+import {renderRouteHome } from "./route";
+<BrowserRouter>
+      <Navbar/>
+      <Switch>
+        {renderRouteHome()}
+        <Route path="" component={PageNotFound} />
+      </Switch>
+    </BrowserRouter>
+
+****Lưu ý:*****
+Khi đi qua bộ định tuyến <Route> thì mặc định có props history, location, match
+giá trị parameter truyền trong url có thể lấy từ props.match.params.<parameter name>
+buoi 37 phân 2
+***************
+===
+Navbar trong react
+React không dùng thẻ a để làm navbar vì sẽ gây load lại page
+mà sử dụng Link của react-router-dom
+import {Link} from "react-router-dom";
+
+  <Link className="nav-link" to="/list-movie">
+       List Movie
+  </Link>
+khi render trên trình duyệt vẫn là thẻ <a> và href
+=======
+import {NavLink} from "react-router-dom";
+//tạo trạng thái active
+<NavLink exact activeClassName="active" className="nav-link" to="/">
+   Home 
+</NavLink>
+
+==========
+cài đặt Redux Thunk <=> Redux saga
+1)
+npm install redux-thunk --save
+2) vào file index.js của react
+//applyMiddleware: apply middleware vào store 
+//compose: giúp tổng hợp lại redux dev tool và redux thunk
+import { createStore , applyMiddleware, compose} from "redux";
+import thunk from "redux-thunk";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
+
+========
+cài đặt material UI  (không bắt buộc)
+npm install @mui/material @emotion/react @emotion/styled
+=======
+cài đặt styled component (không bắt buộc)
+npm install --save styled-components
