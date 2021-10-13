@@ -1,14 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "./css/index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+//Library
 import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
 import "popper.js/dist/umd/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./scss/index.scss";
+
+import "antd/dist/antd.css";
+import "antd/dist/antd";
 
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
