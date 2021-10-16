@@ -5,6 +5,7 @@ import InfoMovie from "./infomovie";
 
 export default class Carousel extends Component {
   render() {
+    const {dataPhim} = this.props;
     return (
       <div className="carousel">
         <div className="container">
@@ -12,7 +13,7 @@ export default class Carousel extends Component {
             <div
               className="carousel-bg"
               style={{
-                backgroundImage: `linear-gradient(to bottom, rgba(43, 43, 44, 0.4), rgba(20, 9, 1, 0.4)), url(../img/movie1.jpg)`,
+                backgroundImage: `linear-gradient(to bottom, rgba(43, 43, 44, 0.4), rgba(20, 9, 1, 0.4)), url(${dataPhim?.hinhAnh})`,
               }}
             ></div>
             <div className="img-wrapper ">
@@ -20,10 +21,10 @@ export default class Carousel extends Component {
                 className="detail-poster"
               >
                 <img
-                  className=""
-                  src="../img/movie1.jpg"
-                  alt="movie1.jpg"
-                  style={{ objectFit: "contain", objectPosition: "left top" }}
+                  className="img-fluid"
+                  src={dataPhim?.hinhAnh}
+                  alt={dataPhim?.tenPhim}
+                  style={{ objectPosition: "left top", height:"100%" }}
                 />
                 <img
                   className="playBtn"
@@ -36,7 +37,7 @@ export default class Carousel extends Component {
 
             <div className="info-movie">
               <div className="content my-4 ml-3">
-                <InfoMovie/>
+                <InfoMovie dataPhim={dataPhim}/>
               </div>
             </div>
           </div>

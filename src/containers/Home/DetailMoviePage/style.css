@@ -227,6 +227,11 @@
   width: 80%;
 }
 
+#tab .rap-phim{
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 20px;
+}
+
 .schedule .info-movie {
   display: block;
   width: auto;

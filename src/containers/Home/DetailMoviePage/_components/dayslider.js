@@ -13,7 +13,6 @@ export default class DaySlider extends Component {
       slidesToShow: 7,
       slidesToScroll: 3,
       arrows: true,
-      // centerMode: true,
     };
     return (
       <div className="day-slider my-3">

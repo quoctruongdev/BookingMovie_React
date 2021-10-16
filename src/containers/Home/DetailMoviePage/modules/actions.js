@@ -1,18 +1,19 @@
 import * as ActionType from "./constants";
-import api from "./../../../../utils/apiUtils";
+import api from "../../../../utils/apiUtils";
 
 export const actFetchDetailMovie = (id) => {
   return (dispatch) => {
     dispatch(actDetailMovieRequest());
 
     api
-      .get(`QuanLyPhim/LayThongTinPhim?MaPhim=${id}`)
+      .get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`)
       .then((result) => {
         dispatch(actDetailMovieSuccess(result.data.content));
       })
       .catch((error) => {
         dispatch(actDetailMovieFailed(error));
       });
+      
   };
 };
 
