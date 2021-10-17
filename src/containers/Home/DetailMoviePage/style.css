@@ -161,6 +161,15 @@
   font-size: 15px;
 }
 
+.day-item.day-active{
+  border: 1px solid rgb(248, 68, 100);
+  border-radius: 3px;
+  outline: none;
+  background-color: rgb(248, 68, 100);
+  color: white;
+}
+
+
 .day-item:hover {
   color: rgb(248, 68, 100);
 }
@@ -215,6 +224,13 @@
   border-radius: 3px;
   border: 1px solid rgb(51, 53, 69);
   color: #4abd5d;
+  cursor: pointer;
+}
+
+#tab .suat-chieu:hover {
+  background-color: #4abd5d;
+  border-color: #4abd5d;
+  color: white;
 }
 
 #tab .ten-rap .rating-icon {
@@ -276,7 +292,8 @@
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
   body,
   html {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    overflow: scroll;
   }
   .img-wrapper {
     width: 255px;
@@ -349,7 +366,8 @@
 @media screen and (max-width: 767.98px) {
   body,
   html {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    overflow: scroll;
   }
   .img-wrapper {
     width: 255px;
