@@ -1,9 +1,12 @@
 {
     "version": 3,
-    "mappings": "ACAA,AAAA,OAAO,CAAC;EACN,KAAK,EAAC,wBAAwB,CAAA,UAAU;CACzC",
+    "mappings": "ACAA,AAAA,OAAO,CAAC;EACN,KAAK,EAAE,cAAc;CACtB;;ACFD,AAAA,aAAa,CAAC,WAAW,CAAC,EAAE,CAAC,MAAM,CAAC;EAClC,aAAa,EAAE,cAAc;EAC7B,MAAM,EAAE,eAAe;EACvB,KAAK,EAAE,eAAe;CACvB;;AAED,AAAA,aAAa,CAAC,WAAW,CAAC,EAAE,AAAA,aAAa,CAAC,MAAM,CAAC;EAC/C,gBAAgB,EAAE,cAAc;CACjC;;AACD,AAAA,aAAa,CAAC,WAAW,CAAC;EACxB,MAAM,EAAE,eAAe;EACvB,WAAW,EAAE,YAAY;CAC1B;;AACD,AAAA,WAAW,CAAC,EAAE,AAAA,aAAa,CAAC,MAAM,AAAA,OAAO,CAAC;EACxC,KAAK,EAAE,eAAe;CACvB;;AACD,AAAA,WAAW,CAAC,EAAE,CAAC,MAAM,AAAA,OAAO,CAAC;EAC3B,KAAK,EAAE,gBAAgB;EACvB,SAAS,EAAE,cAAc;CAC1B",
     "sources": [
         "../scss/index.scss",
-        "../scss/components/header/index.scss"
+        "../scss/components/header/index.scss",
+        "../scss/components/carousel/index.scss",
+        "../scss/components/slick/index.scss",
+        "../scss/components/movie/index.scss"
     ],
     "names": [],
     "file": "index.css"

@@ -1,0 +1,14 @@
+.slick-prev:before,
+.slick-next:before {
+  color: grey !important;
+  font-size: 2.5rem;
+  line-height: 0;
+}
+
+.slick-prev {
+  left: -45px;
+}
+
+.width-item {
+  width: 100% !important;
+}

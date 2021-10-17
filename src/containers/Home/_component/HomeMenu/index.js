@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { Tabs, Radio, Space } from "antd";
+import { Tabs } from "antd";
 
 const { TabPane } = Tabs;
 
 export default function HomeMenu() {
-  const [state, setState] = useState({
+  const [state] = useState({
     tabPosition: "left",
   });
   const { tabPosition } = state;
 
-  const changeTabPosition = (e) => {
-    setState({ tabPosition: e.target.value });
-  };
+  // const changeTabPosition = (e) => {
+  //   setState({ tabPosition: e.target.value });
+  // };
 
   return (
     <div className="container">
@@ -30,6 +30,7 @@ export default function HomeMenu() {
             <img
               src="./asset/img/iconMovie.png"
               style={{ width: 50, height: 50 }}
+              alt=""
             />
           }
           key="1"
@@ -39,6 +40,7 @@ export default function HomeMenu() {
         <TabPane
           tab={
             <img
+              alt=""
               src="./asset/img/iconMovie.png"
               style={{ width: 50, height: 50 }}
             />
@@ -50,6 +52,7 @@ export default function HomeMenu() {
         <TabPane
           tab={
             <img
+              alt=""
               src="./asset/img/iconMovie.png"
               style={{ width: 50, height: 50 }}
             />

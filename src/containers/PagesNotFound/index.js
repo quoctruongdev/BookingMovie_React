@@ -25,7 +25,7 @@ export default function PageNotFound() {
         </svg>
         <p className="text-3xl">Sorry, we couldn't find this page.</p>
         <a
-          href="#"
+          href="/#"
           className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-coolGray-900"
         >
           Back to homepage

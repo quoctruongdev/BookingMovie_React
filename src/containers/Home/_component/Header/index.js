@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function HeaderComponent() {
   return (
     <header
-      className="  dark:bg-coolGray-800 dark:text-coolGray-100 fixed text-white w-full z-50  "
+      className="  dark:bg-coolGray-800 dark:text-coolGray-100 fixed text-white w-full z-50   "
       style={{ backgroundColor: "#323545" }}
     >
       <div className=" flex justify-between h-16 mx-auto my-auto container">
