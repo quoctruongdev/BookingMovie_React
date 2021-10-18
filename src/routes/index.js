@@ -20,7 +20,7 @@ const routesHome = [
   },
   {
     eaxct: false,
-    path: "/detail-movie",
+    path: "/detail-movie/:id",
     component: lazy(() => import("../containers/Home/DetailMoviePage")),
   },
   {

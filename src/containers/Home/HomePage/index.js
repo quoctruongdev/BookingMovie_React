@@ -5,7 +5,7 @@ import ListMoviePage from "../ListMoviePage";
 
 export default function HomePage() {
   return (
-    <div>
+    <div  className="ani">
       <HomeCarousel />
       <ListMoviePage />
       <HomeMenu />

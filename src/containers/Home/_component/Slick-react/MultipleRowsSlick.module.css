@@ -1,12 +1,12 @@
 .slick-prev:before,
 .slick-next:before {
-  color: grey !important;
-  font-size: 2.5rem;
+  color: rgb(50, 53, 69) !important;
+  font-size: 3rem;
   line-height: 0;
 }
 
 .slick-prev {
-  left: -45px;
+  left: -50px;
 }
 
 .width-item {

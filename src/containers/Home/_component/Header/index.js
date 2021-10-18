@@ -16,7 +16,7 @@ export default function HeaderComponent() {
           className="flex items-center p-2"
         >
           <img
-            src={"./asset/img/iconMovie.png"}
+            src={"/asset/img/iconMovie.png"}
             style={{ width: "50px", height: "50px" }}
             alt="iconMovie"
           />

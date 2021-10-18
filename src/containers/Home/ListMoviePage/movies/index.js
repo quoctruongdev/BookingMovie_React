@@ -23,11 +23,14 @@ export default function Movie(props) {
 
         <div className="movie-content">
           <div className="movie-content-header">
-            <NavLink to="#" activeClassName="active">
+            <NavLink
+              to={`detail-movie/${movie.maPhim}`}
+              activeClassName="active"
+            >
               <h3 className="movie-title">{movie.tenPhim}</h3>
             </NavLink>
 
-            {/* <div className="imax-logo" /> */}
+            <div className="imax-logo" />
           </div>
           <div className="movie-info">
             <div className="info-section">

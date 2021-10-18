@@ -51,6 +51,7 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 5000,
 };
+
 export default function MultipleRows() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.listMovieReducer.data);
