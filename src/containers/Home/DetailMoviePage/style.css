@@ -215,6 +215,13 @@
   border-radius: 3px;
   border: 1px solid rgb(51, 53, 69);
   color: #4abd5d;
+  cursor: pointer;
+}
+
+#tab .suat-chieu:hover {
+  background-color: #4abd5d;
+  border-color: #4abd5d;
+  color: white;
 }
 
 #tab .ten-rap .rating-icon {
@@ -227,7 +234,7 @@
   width: 80%;
 }
 
-#tab .rap-phim{
+#tab .rap-phim {
   border-bottom: 1px solid #dee2e6;
   margin-bottom: 20px;
 }
@@ -276,7 +283,8 @@
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
   body,
   html {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    overflow: scroll;
   }
   .img-wrapper {
     width: 255px;

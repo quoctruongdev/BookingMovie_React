@@ -3,7 +3,7 @@ import Carousel from "./_components/carousel";
 import Schedule from "./_components/schedule";
 import "./style.css";
 import { connect } from "react-redux";
-import { actFetchDetailMovie, actFetchCumRap } from "./modules/actions";
+import { actFetchDetailMovie } from "./modules/actions";
 import Loader from "./../../../components/Loader";
 
 class DetailMoviePage extends Component {

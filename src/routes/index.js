@@ -25,6 +25,11 @@ const routesHome = [
   },
   {
     eaxct: false,
+    path: "/booking/:id",
+    component: lazy(() => import("../containers/Home/BookingTicketPage/")),
+  },
+  {
+    eaxct: false,
     path: "/login",
     component: lazy(() => import("../containers/Home/LoginPage")),
   },

@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-
+import { Link } from "react-router-dom";
 
 class Tab extends Component {
   renderLichChieu = (lichChieu) => {
     return lichChieu?.map((item) => {
       return (
-        <div className="suat-chieu mr-4 mb-3">
+        <Link
+          className="suat-chieu mr-4 mb-3"
+          to={`/booking/${item?.maLichChieu}`}
+        >
           <div>{new Date(item?.ngayChieuGioChieu).toLocaleDateString()}</div>
           <div>{new Date(item?.ngayChieuGioChieu).toLocaleTimeString()}</div>
-        </div>
+        </Link>
       );
     });
   };
