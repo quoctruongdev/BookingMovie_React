@@ -15,6 +15,9 @@ import "./scss/index.scss";
 import "antd/dist/antd.css";
 import "antd/dist/antd";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./redux/reducers";

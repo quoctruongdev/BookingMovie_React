@@ -1,14 +1,17 @@
 import React from "react";
 import HomeCarousel from "../_component/Carousel";
-import ListCard from "../_component/_ListCard";
 import HomeMenu from "../_component/HomeMenu";
+import ListMoviePage from "../ListMoviePage";
+// import CineManagement from "../CinemaMagement";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="ani">
       <HomeCarousel />
-      <ListCard />
+      <ListMoviePage />
       <HomeMenu />
+      {/* <Home2 /> */}
+      {/* <CineManagement/> */}
     </div>
   );
 }

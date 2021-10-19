@@ -1,44 +1,51 @@
-import HomeTemplate from "../containers/Home";
-import AboutPage from "../containers/Home/AboutPage";
-import DetailMoviePage from "../containers/Home/DetailMoviePage";
-import HomePage from "../containers/Home/HomePage";
-import ListMovie from "../containers/Home/ListMoviePage";
-import LoginPage from "../containers/Home/LoginPage";
-import BookingTicketPage from "../containers/Home/BookingTicketPage";
+import { lazy } from "react";
 
+import HomeTemplate from "../containers/Home";
+import AdminTemplate from "../containers/Admin";
 const routesHome = [
   {
     eaxct: true,
     path: "/",
-    component: HomePage,
+    component: lazy(() => import("../containers/Home/HomePage")),
   },
   {
     eaxct: false,
     path: "/about",
-    component: AboutPage,
+    component: lazy(() => import("../containers/Home/AboutPage")),
   },
   {
     eaxct: false,
     path: "/list-movie",
-    component: ListMovie,
+    component: lazy(() => import("../containers/Home/ListMoviePage")),
   },
   {
     eaxct: false,
     path: "/detail-movie/:id",
-    component: DetailMoviePage,
+    component: lazy(() => import("../containers/Home/DetailMoviePage")),
   },
   {
     eaxct: false,
     path: "/booking/:id",
-    component: BookingTicketPage,
+    component: lazy(() => import("../containers/Home/BookingTicketPage/")),
   },
   {
     eaxct: false,
     path: "/login",
-    component: LoginPage,
+    component: lazy(() => import("../containers/Home/LoginPage")),
   },
 ];
-const routesAdmin = [];
+const routesAdmin = [
+  {
+    eaxct: false,
+    path: "/dashboard",
+    component: lazy(() => import("../containers/Admin/DashboardPage")),
+  },
+  {
+    eaxct: false,
+    path: "/add-user",
+    component: lazy(() => import("../containers/Admin/AddUserPage")),
+  },
+];
 
 function renderRouteHome() {
   return routesHome.map((route, index) => {
@@ -52,4 +59,17 @@ function renderRouteHome() {
     );
   });
 }
-export { renderRouteHome };
+function renderRouteAdmin() {
+  return routesAdmin.map((route, index) => {
+    return (
+      <AdminTemplate
+        key={index}
+        exact={route.eaxct}
+        path={route.path}
+        Component={route.component}
+      />
+    );
+  });
+}
+
+export { renderRouteHome, renderRouteAdmin };

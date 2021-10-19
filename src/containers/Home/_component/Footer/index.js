@@ -15,18 +15,17 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="text-center text-lg-start"
-    style={{
-        backgroundColor:`rgb(51, 53, 69)`,
-        color:`rgb(204, 204, 204)`
-    }}
+    <footer
+      className="text-center text-lg-start"
+      style={{
+        backgroundColor: `rgb(51, 53, 69)`,
+        color: `rgb(204, 204, 204)`,
+      }}
     >
       <div className="container">
         <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
           <div className="me-5 d-none d-lg-block">
-            <span>
-              Kết nối với chúng tôi:
-            </span>
+            <span>Kết nối với chúng tôi:</span>
           </div>
           <div>
             <NavLink to="/" className="me-4 text-reset">
@@ -63,46 +62,48 @@ export default function Footer() {
                 </h6>
                 <p>
                   <NavLink to="/" className="text-reset">
-                  Giới Thiệu
+                    Giới Thiệu
                   </NavLink>
                 </p>
                 <p>
                   <NavLink to="/" className="text-reset">
-                  Tiện Ích Online
+                    Tiện Ích Online
                   </NavLink>
                 </p>
                 <p>
                   <NavLink to="/" className="text-reset">
-                  Thẻ Quà Tặng
+                    Thẻ Quà Tặng
                   </NavLink>
                 </p>
                 <p>
                   <NavLink to="/" className="text-reset">
-                  Tuyển Dụng
+                    Tuyển Dụng
                   </NavLink>
                 </p>
               </div>
 
               <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold mb-4">Điều khoản sử dụng</h6>
+                <h6 className="text-uppercase fw-bold mb-4">
+                  Điều khoản sử dụng
+                </h6>
                 <p>
                   <NavLink to="/" className="text-reset">
-                  Điều Khoản Chung
+                    Điều Khoản Chung
                   </NavLink>
                 </p>
                 <p>
                   <NavLink to="/" className="text-reset">
-                  Điều Khoản Giao Dịch
+                    Điều Khoản Giao Dịch
                   </NavLink>
                 </p>
                 <p>
                   <NavLink to="/" className="text-reset">
-                  Chính Sách Thanh Toán
+                    Chính Sách Thanh Toán
                   </NavLink>
                 </p>
                 <p>
                   <NavLink to="/" className="text-reset">
-                  Chính Sách Bảo Mật
+                    Chính Sách Bảo Mật
                   </NavLink>
                 </p>
               </div>

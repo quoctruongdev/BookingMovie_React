@@ -1,18 +1,34 @@
 import "./App.css";
 import "./index.css";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
-import PageNotFound from "./containers/PagesNotFound";
+import { Route, Switch } from "react-router-dom";
 import { renderRouteHome } from "./routes";
+import { renderRouteAdmin } from "./routes";
+import { Suspense, lazy } from "react";
+import Loader from "./components/Loader";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Suspense
+      fallback={
+        <>
+          <Loader />
+        </>
+      }
+    >
       <Switch>
         {renderRouteHome()}
+        {renderRouteAdmin()}
 
-        <Route path="" component={PageNotFound} />
+        <Route
+          path="/auth"
+          component={lazy(() => import("./containers/Admin/AuthPage"))}
+        />
+        <Route
+          path=""
+          component={lazy(() => import("./containers/PagesNotFound"))}
+        />
       </Switch>
-    </BrowserRouter>
+    </Suspense>
   );
 }
 

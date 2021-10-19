@@ -2,7 +2,6 @@ import React from "react";
 import { Route } from "react-router-dom";
 import HeaderComponent from "./_component/Header";
 import Footer from "./_component/Footer";
-import HomePage from "./HomePage";
 
 function LayoutHome(props) {
   return (

@@ -1,10 +1,17 @@
 import { combineReducers } from "redux";
+import addCarouselReducer from "../../containers/Home/_component/Carousel/modules/reducer";
+import authReducer from "../../containers/Admin/AuthPage/modules/reducer";
+import listMovieReducer from "../../containers/Home/ListMoviePage/modules/reducer";
 import detailMovieReducer from "../../containers/Home/DetailMoviePage/modules/reducer";
-import bookingTicketReducer from "../../containers/Home/BookingTicketPage/modules/reducer";
-
+import cineManagementReducer from "../../containers/Home/CinemaMagement/modules/reducer";
+import cineNameReducer from "../../containers/Home/_component/HomeMenu/modules/reducer";
 const rootReducer = combineReducers({
-    detailMovieReducer,
-    bookingTicketReducer,
+  addCarouselReducer,
+  authReducer,
+  listMovieReducer,
+  detailMovieReducer,
+  cineManagementReducer,
+  cineNameReducer,
 });
 
 export default rootReducer;
