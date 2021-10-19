@@ -1,7 +1,33 @@
 import React from "react";
 import "./style.css";
+import Iframe from "react-iframe";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { actFetchListMovie } from "../../ListMoviePage/modules/actions";
 
-function ModalVideo() {
+function ModalVideo(props) {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.listMovieReducer.data);
+
+  useEffect(() => {
+    dispatch(actFetchListMovie());
+  }, []);
+
+  function renderVideo() {
+    return data?.map((item, index) => {
+      return (
+        <Iframe
+          key={index}
+          url={item.trailer}
+          width="450px"
+          height="450px"
+          id="myId"
+          className="myClassname"
+        />
+      );
+    });
+  }
+
   return (
     <div className="container">
       {/* Button trigger modal */}
@@ -37,12 +63,12 @@ function ModalVideo() {
               {/* 16:9 aspect ratio */}
 
               <div className="embed-responsive embed-responsive-16by9">
-                <iframe
-                  className="embed-responsive-item"
-                  src="https://www.youtube.com/embed/DKqu9qc-5f4"
-                  id="video"
-                  allowscriptaccess="always"
-                  allow="autoplay"
+                <Iframe
+                  url={renderVideo()}
+                  width="450px"
+                  height="450px"
+                  id="myId"
+                  className="myClassname"
                 />
               </div>
             </div>
@@ -53,4 +79,4 @@ function ModalVideo() {
   );
 }
 
-export { ModalVideo };
+export default ModalVideo;

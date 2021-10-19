@@ -7,6 +7,11 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actFetchListMovie } from "./../../ListMoviePage/modules/actions";
 
+import { Tabs } from "antd";
+import { VideoCameraAddOutlined, VideoCameraOutlined } from "@ant-design/icons";
+
+const { TabPane } = Tabs;
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -37,7 +42,7 @@ function SamplePrevArrow(props) {
 }
 
 const settings = {
-  className: "contain  ",
+  className: "cover  ",
   centerMode: true,
   infinite: true,
   centerPadding: "60px",
@@ -50,6 +55,7 @@ const settings = {
   margin: 0,
   autoplay: true,
   autoplaySpeed: 5000,
+  zIndex: 1000,
 };
 
 export default function MultipleRows() {
@@ -62,21 +68,62 @@ export default function MultipleRows() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function renderMovie() {
+  function renderMovieNow() {
     if (loading) return <Loader />;
     return data?.map((movie, index) => {
-      return (
-        <div className={`${styleSlick["width-item"]}`} key={index}>
-          <Movie movie={movie} />
-        </div>
-      );
+      if (movie.dangChieu === true) {
+        return (
+          <div className={`${styleSlick["width-item"]}`} key={index}>
+            <Movie movie={movie} />
+          </div>
+        );
+      }
+    });
+  }
+  function renderMovieComing() {
+    return data?.map((movie, index) => {
+      if (movie.sapChieu === true) {
+        return (
+          <div className={`${styleSlick["width-item"]}`} key={index}>
+            <Movie movie={movie} />
+          </div>
+        );
+      }
     });
   }
 
   return (
     <div>
-      <h2>Danh sách phim </h2>
-      <Slider {...settings}>{renderMovie()}</Slider>
+      <div id="list__Film">
+        <Tabs defaultActiveKey="1">
+          <TabPane
+            tab={
+              <span>
+                <VideoCameraAddOutlined />
+                Phim đang chiêu
+              </span>
+            }
+            key="1"
+          >
+            <div>
+              {" "}
+              <Slider {...settings}>{renderMovieNow()}</Slider>
+            </div>
+          </TabPane>
+          <TabPane
+            tab={
+              <span>
+                <VideoCameraOutlined />
+                Phim sắp chiếu
+              </span>
+            }
+            key="2"
+          >
+            <Slider {...settings}>{renderMovieComing()}</Slider>
+          </TabPane>
+        </Tabs>
+        ,
+      </div>
     </div>
   );
 }

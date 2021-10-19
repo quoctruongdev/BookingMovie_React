@@ -3,6 +3,8 @@
   color: rgb(50, 53, 69) !important;
   font-size: 3rem;
   line-height: 0;
+  background-color: red !important;
+  z-index: 1000 !important;
 }
 
 .slick-prev {

@@ -37,7 +37,7 @@ export default function HeaderComponent() {
           <li className="flex">
             <NavLink
               activeClassName="active"
-              to="/about"
+              to="#"
               className="flex items-center px-4 -mb-4  dark:border-transparent dark:text-white-400 dark:border-white-400"
             >
               <font style={{ verticalAlign: "inherit" }}>

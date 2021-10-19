@@ -17,7 +17,6 @@ const contentStyle = {
 
 export default function HomeCarousel() {
   const dispatch = useDispatch();
-
   const loading = useSelector((state) => state.addCarouselReducer.loading);
   const data = useSelector((state) => state.addCarouselReducer.data);
 

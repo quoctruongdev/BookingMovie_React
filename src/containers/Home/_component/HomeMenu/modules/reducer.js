@@ -2,29 +2,27 @@ import * as ActionType from "./constants";
 
 const initialStatae = {
   loading: false,
-  data: null,
+  data2: null,
   error: null,
-  dangChieu: true,
-  sapChieu: true,
 };
 
-const listMovieReducer = (state = initialStatae, action) => {
+const cineNameReducer = (state = initialStatae, action) => {
   switch (action.type) {
-    case ActionType.LIST_MOVIE_REQUEST:
+    case ActionType.CINEMA_NAME_REQUEST:
       state.loading = true;
-      state.data = null;
+      state.data2 = null;
       state.error = null;
       return { ...state };
 
-    case ActionType.LIST_MOVIE_SUCCESS:
+    case ActionType.CINEMA_NAME_SUCCESS:
       state.loading = false;
-      state.data = action.payload;
+      state.data2 = action.payload;
       state.error = null;
       return { ...state };
 
-    case ActionType.LIST_MOVIE_FAILED:
+    case ActionType.CINEMA_NAME_FAILED:
       state.loading = false;
-      state.data = null;
+      state.data2 = null;
       state.error = action.payload;
       return { ...state };
 
@@ -33,4 +31,4 @@ const listMovieReducer = (state = initialStatae, action) => {
   }
 };
 
-export default listMovieReducer;
+export default cineNameReducer;

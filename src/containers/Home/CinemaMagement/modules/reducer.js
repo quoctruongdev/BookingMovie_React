@@ -4,25 +4,23 @@ const initialStatae = {
   loading: false,
   data: null,
   error: null,
-  dangChieu: true,
-  sapChieu: true,
 };
 
-const listMovieReducer = (state = initialStatae, action) => {
+const cineManagementReducer = (state = initialStatae, action) => {
   switch (action.type) {
-    case ActionType.LIST_MOVIE_REQUEST:
+    case ActionType.CINEMA_MANAGEMENT_REQUEST:
       state.loading = true;
       state.data = null;
       state.error = null;
       return { ...state };
 
-    case ActionType.LIST_MOVIE_SUCCESS:
+    case ActionType.CINEMA_MANAGEMENT_SUCCESS:
       state.loading = false;
       state.data = action.payload;
       state.error = null;
       return { ...state };
 
-    case ActionType.LIST_MOVIE_FAILED:
+    case ActionType.CINEMA_MANAGEMENT_FAILED:
       state.loading = false;
       state.data = null;
       state.error = action.payload;
@@ -33,4 +31,4 @@ const listMovieReducer = (state = initialStatae, action) => {
   }
 };
 
-export default listMovieReducer;
+export default cineManagementReducer;
