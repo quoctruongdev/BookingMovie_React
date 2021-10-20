@@ -1,5 +1,5 @@
 import * as ActionType from "./constants";
-import api from "../../../../utils/apiUtils";
+import {apiFront} from "../../../../utils/apiUtils";
 
 export const selectSeatAction = (hang, cot, ghe) => {
   return {
@@ -26,7 +26,7 @@ export const actFetchPhongVeInfo = (id) => {
   return (dispatch) => {
     dispatch(actPhongVeInfoRequest());
 
-    api
+    apiFront
       .get(`QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`)
       .then((result) => {
         dispatch(actPhongVeInfoSuccess(result.data.content));

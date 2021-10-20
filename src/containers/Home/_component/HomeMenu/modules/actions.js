@@ -1,10 +1,10 @@
 import * as ActionType from "./constants";
-import api from "./../../../../../utils/apiUtils";
+import {apiFront} from "./../../../../../utils/apiUtils";
 
 export const actFetchCineName = (id) => {
   return (dispatch) => {
     dispatch(actCineNameRequest());
-    api
+    apiFront
       .get(`LayThongTinCumRapTheoHeThong?maHeThongRap=${id}`)
       .then((result) => {
         dispatch(actCineNameSuccess(result.data.content));

@@ -1,11 +1,11 @@
 import * as ActionType from "./constants";
-import api from "../../../../utils/apiUtils";
+import {apiFront} from "../../../../utils/apiUtils";
 
 export const actFetchDetailMovie = (id) => {
   return (dispatch) => {
     dispatch(actDetailMovieRequest());
 
-    api
+    apiFront
       .get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`)
       .then((result) => {
         dispatch(actDetailMovieSuccess(result.data.content));

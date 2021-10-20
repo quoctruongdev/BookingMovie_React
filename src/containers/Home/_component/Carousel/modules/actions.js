@@ -1,10 +1,10 @@
 import * as ActionType from "./constants";
-import api from "./../../../../../utils/apiUtils";
+import {apiFront} from "./../../../../../utils/apiUtils";
 
 export const actAddCarousel = () => {
   return (dispatch) => {
     dispatch(actAddCarouselRequest());
-    api
+    apiFront
       .get("QuanLyPhim/LayDanhSachBanner")
       .then((result) => {
         dispatch(actAddCarouselSuccess(result.data.content));

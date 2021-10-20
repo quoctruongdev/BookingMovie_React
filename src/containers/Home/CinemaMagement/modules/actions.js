@@ -1,10 +1,10 @@
 import * as ActionType from "./constants";
-import api from "./../../../../utils/apiUtils";
+import {apiFront} from "./../../../../utils/apiUtils";
 
 export const actFetchCineManagement = () => {
   return (dispatch) => {
     dispatch(actCineManagementRequest());
-    api
+    apiFront
       .get("QuanLyRap/LayThongTinHeThongRap")
       .then((result) => {
         dispatch(actCineManagementSuccess(result.data.content));

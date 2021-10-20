@@ -1,10 +1,10 @@
 import * as ActionType from "./constants";
-import api from "./../../../../utils/apiUtils";
+import {apiFront} from "./../../../../utils/apiUtils";
 
 export const actFetchListMovie = () => {
   return (dispatch) => {
     dispatch(actListMovieRequest());
-    api
+    apiFront
       .get("QuanLyPhim/LayDanhSachPhim?maNhom=GP03")
       .then((result) => {
         dispatch(actListMovieSuccess(result.data.content));
