@@ -1,12 +1,21 @@
 import "./App.css";
 import "./index.css";
-import { Route, Switch } from "react-router-dom";
-import { renderRouteHome } from "./routes";
-import { renderRouteAdmin } from "./routes";
+import { Route, Switch, withRouter } from "react-router-dom";
+import { renderRouteHome, renderRouteAdmin } from "./routes";
 import { Suspense, lazy } from "react";
 import Loader from "./components/Loader";
+import ScrollToTop from "./components/ScrollToTop";
+import { actTryLogin } from "./containers/Home/LoginPage/modules/actions";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-function App() {
+function App(props) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    //dispatch actTryLogin
+    dispatch(actTryLogin(props.history));
+  }, []);
+
   return (
     <Suspense
       fallback={
@@ -15,6 +24,7 @@ function App() {
         </>
       }
     >
+      <ScrollToTop />
       <Switch>
         {renderRouteHome()}
         {renderRouteAdmin()}
@@ -22,6 +32,10 @@ function App() {
         <Route
           path="/auth"
           component={lazy(() => import("./containers/Admin/AuthPage"))}
+        />
+        <Route
+          path="/login"
+          component={lazy(() => import("./containers/Home/LoginPage"))}
         />
         <Route
           path=""
@@ -32,4 +46,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);

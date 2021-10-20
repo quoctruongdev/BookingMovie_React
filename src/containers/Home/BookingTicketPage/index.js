@@ -8,6 +8,8 @@ import {
   actSetDataGhe,
   clearGheDangChon,
 } from "./modules/actions";
+import { Link } from "react-router-dom";
+import Loader from "./../../../components/Loader";
 
 class BookingTicketPage extends Component {
   componentDidMount() {
@@ -16,7 +18,6 @@ class BookingTicketPage extends Component {
   }
 
   componentWillUnmount() {
-    console.log("componentWillUnmount");
     this.props.clearDataUser();
   }
 
@@ -76,6 +77,9 @@ class BookingTicketPage extends Component {
   };
 
   render() {
+    if (this.props.loading) return <Loader />;
+    let isDisplay = false;
+    if (this.props.dsGheDangDat.length !== 0) isDisplay= true;
     return (
       <>
         <div
@@ -101,17 +105,19 @@ class BookingTicketPage extends Component {
                   <div className="seatinfo">
                     <div className="sub-title mt-3 mb-2">Thông tin đặt chỗ</div>
                     <ListSelectedSeat />
-                    <button
+                    <Link to="/login"
                       className="btn btn-danger"
+                      
                       style={{
                         position: "relative",
                         width: "100px",
                         left: "50%",
                         marginLeft: "-50px",
+                        display: isDisplay ? "block": "none", 
                       }}
                     >
                       Mua vé
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -129,6 +135,7 @@ const mapStateToProps = (state) => {
     error: state.bookingTicketReducer.error,
     danhSachGhe: state.bookingTicketReducer.danhSachGhe,
     dataGhe: state.bookingTicketReducer.dataGhe,
+    dsGheDangDat: state.bookingTicketReducer.dsGheDangDat,
   };
 };
 

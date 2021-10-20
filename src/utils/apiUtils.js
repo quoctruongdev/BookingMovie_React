@@ -24,4 +24,24 @@ api.interceptors.request.use(
   }
 );
 
-export default api;
+const apiFront = axios.create({
+  baseURL: "https://movienew.cybersoft.edu.vn/api/",
+});
+apiFront.interceptors.request.use(
+  (config) => {
+    config.headers = {
+      ...config.headers,
+      TokenCybersoft: TOKEN_CYBERSOFFT,
+      Authorization: localStorage.getItem("User")
+        ? "Bearer" + JSON.parse(localStorage.getItem("User")).accessToken
+        : "",
+    };
+
+    return config;
+  },
+  (errors) => {
+    return Promise.reject(errors);
+  }
+);
+
+export { api, apiFront };

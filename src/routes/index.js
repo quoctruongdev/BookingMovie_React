@@ -30,8 +30,8 @@ const routesHome = [
   },
   {
     eaxct: false,
-    path: "/login",
-    component: lazy(() => import("../containers/Home/LoginPage")),
+    path: "/mypage",
+    component: lazy(() => import("../containers/Home/MyPage/")),
   },
 ];
 const routesAdmin = [
@@ -44,6 +44,7 @@ const routesAdmin = [
     eaxct: false,
     path: "/add-user",
     component: lazy(() => import("../containers/Admin/AddUserPage")),
+    
   },
 ];
 
