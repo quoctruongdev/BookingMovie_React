@@ -5,6 +5,7 @@ import HomePage from "../containers/Home/HomePage";
 import ListMovie from "../containers/Home/ListMoviePage";
 import LoginPage from "../containers/Home/LoginPage";
 import BookingTicketPage from "../containers/Home/BookingTicketPage";
+import MyPage from "../containers/Home/MyPage";
 
 const routesHome = [
   {
@@ -34,8 +35,8 @@ const routesHome = [
   },
   {
     eaxct: false,
-    path: "/login",
-    component: LoginPage,
+    path: "/mypage",
+    component: MyPage,
   },
 ];
 const routesAdmin = [];

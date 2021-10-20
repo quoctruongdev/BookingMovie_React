@@ -16,7 +16,6 @@ function LayoutHome(props) {
 
 export default function HomeTemplate(props) {
   const { exact, path, Component } = props;
-
   return (
     <LayoutHome>
       <Route exact={exact} path={path} component={Component} />
