@@ -3,44 +3,86 @@ import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <div>
-      <nav className="navbar navbar-expand-md bg-dark navbar-dark">
-        <a className="navbar-brand" href="/auth">
-          Navbar
-        </a>
-        {/* Toggler/collapsibe Button */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapsibleNavbar"
+    <header
+      className="  dark:bg-coolGray-800 dark:text-coolGray-100 fixed text-white w-full z-50  "
+      style={{ backgroundColor: "#323545", top: "0" }}
+    >
+      <div className=" flex justify-between h-16 mx-auto my-auto container">
+        <NavLink
+          exact
+          to="/"
+          activeClassName="active"
+          aria-label="quay lại trang chủ"
+          className="flex items-center p-2"
         >
-          <span className="navbar-toggler-icon" />
-        </button>
-        {/* Navbar links */}
-        <div className="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to="/dashboard"
-              >
-                DashBoard
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to="/add-user"
-              >
-                Add user
-              </NavLink>
-            </li>
-          </ul>
+          <img
+            src={"/asset/img/iconMovie.png"}
+            style={{ width: "50px", height: "50px" }}
+            alt="iconMovie"
+          />
+        </NavLink>
+        <ul className="items-stretch hidden space-x-3 lg:flex">
+          <li className="flex">
+            <NavLink
+              exact
+              activeClassName="active"
+              to="/dashboard"
+              className="flex items-center px-4 -mb-4  dark:border-transparent dark:text-white-400 dark:border-white-400 "
+            >
+              <font style={{ verticalAlign: "inherit" }}>
+                <font style={{ verticalAlign: "inherit" }}>Dashboard</font>
+              </font>
+            </NavLink>
+          </li>
+
+          <li className="flex">
+            <NavLink
+              activeClassName="active"
+              to="/film"
+              className="flex items-center px-4 -mb-4  dark:border-transparent dark:text-white-400 dark:border-white-400"
+            >
+              <font style={{ verticalAlign: "inherit" }}>
+                <font style={{ verticalAlign: "inherit" }}>Quản lý phim</font>
+              </font>
+            </NavLink>
+          </li>
+
+          <li className="flex">
+            <NavLink
+              activeClassName="active"
+              to="add-user"
+              className="flex items-center px-4 -mb-4 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
+            >
+              <font style={{ verticalAlign: "inherit" }}>
+                <font style={{ verticalAlign: "inherit" }}>Add user</font>
+              </font>
+            </NavLink>
+          </li>
+        </ul>
+        <div className="items-center flex-shrink-0 hidden lg:flex">
+          <button className="self-center px-8 py-3 rounded">
+            <font style={{ verticalAlign: "inherit" }}>
+              <font style={{ verticalAlign: "inherit" }}>Logout</font>
+            </font>
+          </button>
         </div>
-      </nav>
-    </div>
+        <button className="p-4 lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6 dark:text-coolGray-100"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
   );
 }
