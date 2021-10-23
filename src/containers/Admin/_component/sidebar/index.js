@@ -7,7 +7,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CalendarViewMonthIcon from "@mui/icons-material/CalendarViewMonth";
 import MovieIcon from "@mui/icons-material/Movie";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import PeopleIcon from "@mui/icons-material/People";
 import {
   PieChartOutlined,
   MenuUnfoldOutlined,
@@ -19,6 +20,7 @@ import Film from "../../Film/film";
 import DashboardPage from "../../Dashboard";
 import ShowTime from "../../Showtime";
 import AdNewFilm from "../../Film/addNewFilm/adnewfilm";
+import AddUser from "../../User/AddUser";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -56,23 +58,29 @@ export default function SideBar(props) {
                 Dashboard
               </NavLink>
             </Menu.Item>
-            <Menu.Item key="2" icon={<AccountCircleIcon />}>
-              <NavLink exact to="/dashboard/user">
-                User
-              </NavLink>
-            </Menu.Item>
 
-            <SubMenu key="sub1" icon={<LocalMoviesIcon />} title="Film">
-              <Menu.Item key="3" icon={<MovieIcon />}>
+            <SubMenu key="sub1" icon={<AccountCircleIcon />} title="User">
+              <Menu.Item key="2" icon={<PeopleIcon />}>
+                <NavLink to="/dashboard/user">List User</NavLink>
+              </Menu.Item>
+              <Menu.Item key="3" icon={<PersonAddIcon />}>
+                <NavLink to="/dashboard/adduser">Add User</NavLink>
+              </Menu.Item>
+              {/* <Menu.Item key="3">Film</Menu.Item> */}
+              {/* <Menu.Item key="4">Add New Film</Menu.Item> */}
+            </SubMenu>
+
+            <SubMenu key="sub2" icon={<LocalMoviesIcon />} title="Film">
+              <Menu.Item key="4" icon={<MovieIcon />}>
                 <NavLink to="/dashboard/film">List Film</NavLink>
               </Menu.Item>
-              <Menu.Item key="4" icon={<MovieFilterIcon />}>
+              <Menu.Item key="5" icon={<MovieFilterIcon />}>
                 <NavLink to="/dashboard/addnewfilm">Add New Film</NavLink>
               </Menu.Item>
               {/* <Menu.Item key="3">Film</Menu.Item> */}
               {/* <Menu.Item key="4">Add New Film</Menu.Item> */}
             </SubMenu>
-            <Menu.Item key="8" icon={<CalendarViewMonthIcon />}>
+            <Menu.Item key="6" icon={<CalendarViewMonthIcon />}>
               <NavLink to="/dashboard/show">Showtime</NavLink>
             </Menu.Item>
           </Menu>
@@ -121,6 +129,7 @@ export default function SideBar(props) {
           >
             <Route exact path="/dashboard" component={DashboardPage} />
             <Route path="/dashboard/user" component={User} />
+            <Route path="/dashboard/adduser" component={AddUser} />
             <Route path="/dashboard/film" component={Film} />
             <Route path="/dashboard/addnewfilm" component={AdNewFilm} />
             <Route path="/dashboard/show" component={ShowTime} />

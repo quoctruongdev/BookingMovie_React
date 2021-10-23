@@ -57,6 +57,11 @@ const routesAdmin = [
   },
   {
     eaxct: false,
+    path: "/dashboard/adduser",
+    component: lazy(() => import("../containers/Admin/User/AddUser")),
+  },
+  {
+    eaxct: false,
     path: "/dashboard/show",
     component: lazy(() => import("../containers/Admin/Showtime")),
   },
