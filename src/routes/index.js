@@ -48,7 +48,7 @@ const routesAdmin = [
   {
     eaxct: false,
     path: "/dashboard/film",
-    component: lazy(() => import("../containers/Admin/Film")),
+    component: lazy(() => import("../containers/Admin/Film/film")),
   },
   {
     eaxct: false,

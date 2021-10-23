@@ -1,4 +1,4 @@
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu } from "antd";
 import React from "react";
 import "./style.css";
 import { useState } from "react";
@@ -6,19 +6,16 @@ import MovieFilterIcon from "@mui/icons-material/MovieFilter";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CalendarViewMonthIcon from "@mui/icons-material/CalendarViewMonth";
 import MovieIcon from "@mui/icons-material/Movie";
+import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 
 import {
-  DesktopOutlined,
   PieChartOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
 import { NavLink, BrowserRouter, Route } from "react-router-dom";
 import User from "../../User";
-import Film from "../../Film";
+import Film from "../../Film/film";
 import DashboardPage from "../../Dashboard";
 import ShowTime from "../../Showtime";
 import AdNewFilm from "../../Film/addNewFilm/adnewfilm";
@@ -26,7 +23,7 @@ import AdNewFilm from "../../Film/addNewFilm/adnewfilm";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-export default function SideBar() {
+export default function SideBar(props) {
   const [state, setState] = useState({
     collapsed: false,
   });
@@ -41,16 +38,17 @@ export default function SideBar() {
       <Layout style={{ minHeight: "100vh" }}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo p-2 ">
-            <NavLink to="/">
+            <a href="/#">
               <img
                 src="/asset/img/iconMovie.png"
                 style={{ height: 40, width: 40 }}
               />
-            </NavLink>
+            </a>
           </div>
           <Menu
             theme="dark"
             //   defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={props.path}
             mode="inline"
           >
             <Menu.Item key="1" icon={<PieChartOutlined />}>
@@ -64,7 +62,7 @@ export default function SideBar() {
               </NavLink>
             </Menu.Item>
 
-            <SubMenu key="sub1" icon={<UserOutlined />} title="Film">
+            <SubMenu key="sub1" icon={<LocalMoviesIcon />} title="Film">
               <Menu.Item key="3" icon={<MovieIcon />}>
                 <NavLink to="/dashboard/film">List Film</NavLink>
               </Menu.Item>
@@ -128,7 +126,7 @@ export default function SideBar() {
             <Route path="/dashboard/show" component={ShowTime} />
           </Content>
           <Footer style={{ textAlign: "center" }}>
-            Ant Design ©2018 Created by Ant UED
+            Design ©2021 Created by Admin
           </Footer>
         </Layout>
       </Layout>

@@ -7,6 +7,7 @@ import cineManagementReducer from "../../containers/Home/CinemaMagement/modules/
 import cineNameReducer from "../../containers/Home/_component/HomeMenu/modules/reducer";
 import bookingTicketReducer from "../../containers/Home/BookingTicketPage/modules/reducer";
 import logInReducer from "../../containers/Home/LoginPage/modules/reducer";
+import addMovieReducer from "../../containers/Admin/Film/addNewFilm/modules/reducer";
 
 const rootReducer = combineReducers({
   addCarouselReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   cineNameReducer,
   bookingTicketReducer,
   logInReducer,
+  addMovieReducer,
 });
 
 export default rootReducer;

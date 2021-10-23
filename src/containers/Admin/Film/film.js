@@ -1,27 +1,19 @@
-import React, { Fragment } from "react";
-import { Button, Table } from "antd";
-import { NavLink } from "react-router-dom";
-import { Input, Space } from "antd";
+import React, { Fragment, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Button, Table, Input } from "antd";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-
-import {
-  EditOutlined,
-  SearchOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { SearchOutlined } from "@ant-design/icons";
 import { actFetchListMovie } from "../../Home/ListMoviePage/modules/actions";
 
-export default function Film() {
+export default function Film(props) {
   const { Search } = Input;
   const onSearch = (value) => console.log(value);
 
   const data = useSelector((state) => state.listMovieReducer.data);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(actFetchListMovie());
+    dispatch(actFetchListMovie(props.history));
   }, []);
 
   const columns = [
@@ -69,15 +61,15 @@ export default function Film() {
       render: (text, item) => {
         return (
           <Fragment>
-            {item.moTa.length > 50
-              ? item.moTa.substr(0, 50) + "..."
+            {item.moTa.length > 100
+              ? item.moTa.substr(0, 100) + "..."
               : item.moTa}
           </Fragment>
         );
       },
       //   sorter: (a, b) => a.tenPhim.length - b.tenPhim.length,
       sortDrections: ["descen"],
-      width: "35%",
+      // width: "40%",
     },
     {
       title: "Hành động",
@@ -96,7 +88,7 @@ export default function Film() {
       },
       //   color=" secondary "
       //   sorter: (a, b) => a.hanhDong.length - b.hanhDong.length,
-      //   width: "30%",
+      width: "10%",
     },
   ];
   //   const data2 = data;
@@ -108,7 +100,14 @@ export default function Film() {
   return (
     <div className="container text text-4xl  ">
       <h3>Quản lý phim</h3>
-      <Button className="mb-5">Thêm phim</Button>
+      <Button
+        className="mb-5"
+        onClick={() => {
+          props.history.push("/dashboard/addnewfilm");
+        }}
+      >
+        Thêm phim
+      </Button>
       <Search
         className="mb-5"
         placeholder="input search text"
