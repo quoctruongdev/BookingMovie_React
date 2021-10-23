@@ -55,7 +55,6 @@ const settings = {
   margin: 0,
   autoplay: true,
   autoplaySpeed: 5000,
-  zIndex: 1000,
 };
 
 export default function MultipleRows() {

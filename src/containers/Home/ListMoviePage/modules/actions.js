@@ -1,5 +1,5 @@
 import * as ActionType from "./constants";
-import {apiFront} from "./../../../../utils/apiUtils";
+import { apiFront } from "./../../../../utils/apiUtils";
 
 export const actFetchListMovie = () => {
   return (dispatch) => {

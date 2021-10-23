@@ -1,5 +1,5 @@
 import * as ActionType from "./constants";
-import api from "./../../../../utils/apiUtils";
+import { api } from "./../../../../utils/apiUtils";
 
 //Giả sử BE trả về exp time: 3600000 (1 giờ)
 const TIME_EXP = 3600000;
@@ -16,7 +16,7 @@ export const actAuthApi = (user, history) => {
           return Promise.reject({
             response: {
               data: {
-                content: "Ban k co quyen truy cap",
+                content: "Bạn không có quyền truy cập.",
               },
             },
           });

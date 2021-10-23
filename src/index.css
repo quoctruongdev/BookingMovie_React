@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background: rgb(83, 80, 83) !important; */
 }
 
 code {
@@ -16,4 +17,3 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-

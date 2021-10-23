@@ -56,14 +56,34 @@ const routesHome = [
 ];
 const routesAdmin = [
   {
-    exact: false,
+    eaxct: false,
     path: "/dashboard",
-    component: lazy(() => import("../containers/Admin/DashboardPage")),
+    component: lazy(() => import("../containers/Admin/Dashboard")),
   },
   {
-    exact: false,
+    eaxct: false,
     path: "/add-user",
     component: lazy(() => import("../containers/Admin/AddUserPage")),
+  },
+  {
+    eaxct: false,
+    path: "/dashboard/film",
+    component: lazy(() => import("../containers/Admin/Film/film")),
+  },
+  {
+    eaxct: false,
+    path: "/dashboard/user",
+    component: lazy(() => import("../containers/Admin/User")),
+  },
+  {
+    eaxct: false,
+    path: "/dashboard/adduser",
+    component: lazy(() => import("../containers/Admin/User/AddUser")),
+  },
+  {
+    eaxct: false,
+    path: "/dashboard/show",
+    component: lazy(() => import("../containers/Admin/Showtime")),
   },
 ];
 

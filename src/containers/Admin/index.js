@@ -1,15 +1,24 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Navbar from "./_component/Navbar";
+import Sidebar from "./_component/sidebar";
 
 function LayoutAdmin(props) {
   return (
     <>
-      <Navbar />
+      <Sidebar />
       {props.children}
     </>
   );
 }
+
+// function LayoutAdmin(props) {
+//   return (
+//     <>
+//       <Sidebar />
+//       {props.children}
+//     </>
+//   );
+// }
 
 // export default function AdminTemplate(props) {
 //   const { exact, path, Component } = props;
