@@ -4,18 +4,18 @@ import { Button, Table, Input } from "antd";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { SearchOutlined } from "@ant-design/icons";
-import { actFetchAddUser } from "./modules/actions";
+import { actFetchListUser } from "./modules/actions";
 
 export default function Film(props) {
   console.log(props);
   const { Search } = Input;
   const onSearch = (value) => console.log(value);
 
-  const data = useSelector((state) => state.addUserReducer.data);
+  const data = useSelector((state) => state.listUserReducer.data);
   const dispatch = useDispatch();
 
-  useEffect((GrID) => {
-    dispatch(actFetchAddUser(GrID));
+  useEffect(() => {
+    dispatch(actFetchListUser());
   }, []);
 
   const columns = [

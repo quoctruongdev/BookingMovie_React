@@ -6,21 +6,21 @@ const initialStatae = {
   error: null,
 };
 
-const listUserReducer = (state = initialStatae, action) => {
+const addUserReducer = (state = initialStatae, action) => {
   switch (action.type) {
-    case ActionType.LIST_USER_REQUEST:
+    case ActionType.ADD_USER_REQUEST:
       state.loading = true;
       state.data = null;
       state.error = null;
       return { ...state };
 
-    case ActionType.LIST_USER_SUCCESS:
+    case ActionType.ADD_USER_SUCCESS:
       state.loading = false;
       state.data = action.payload;
       state.error = null;
       return { ...state };
 
-    case ActionType.LIST_USER_FAILED:
+    case ActionType.ADD_USER_FAILED:
       state.loading = false;
       state.data = null;
       state.error = action.payload;
@@ -31,4 +31,4 @@ const listUserReducer = (state = initialStatae, action) => {
   }
 };
 
-export default listUserReducer;
+export default addUserReducer;

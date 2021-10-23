@@ -9,7 +9,7 @@ import signUpReducer from "../../containers/Home/SignUpPage/modules/reducer";
 import thongTinRapReducer from "../../containers/Home/HomePage/modules/reducer";
 import allMovieReducer from "../../containers/Home/AllMoviePage/modules/reducer";
 import addMovieReducer from "../../containers/Admin/Film/addNewFilm/modules/reducer";
-import addUserReducer from "../../containers/Admin/User/modules/reducer";
+import listUserReducer from "../../containers/Admin/User/modules/reducer";
 
 const rootReducer = combineReducers({
   addCarouselReducer,
@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   thongTinRapReducer,
   allMovieReducer,
   addMovieReducer,
-  addUserReducer,
+  listUserReducer,
 });
 
 export default rootReducer;

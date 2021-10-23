@@ -1,36 +1,36 @@
 import * as ActionType from "./constants";
 import { api } from "./../../../../utils/apiUtils";
 
-export const actFetchAddUser = () => {
+export const actFetchListUser = () => {
   return (dispatch) => {
-    dispatch(actAddUserRequest());
+    dispatch(actListUserRequest());
     api
       .get(`QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP10`)
       .then((result) => {
-        dispatch(actAddUserSuccess(result.data.content));
+        dispatch(actListUserSuccess(result.data.content));
       })
       .catch((err) => {
-        dispatch(actAddUserFailed(err));
+        dispatch(actListUserFailed(err));
       });
   };
 };
 
-const actAddUserRequest = () => {
+const actListUserRequest = () => {
   return {
-    type: ActionType.ADD_USER_REQUEST,
+    type: ActionType.LIST_USER_REQUEST,
   };
 };
 
-const actAddUserSuccess = (data) => {
+const actListUserSuccess = (data) => {
   return {
-    type: ActionType.ADD_USER_SUCCESS,
+    type: ActionType.LIST_USER_SUCCESS,
     payload: data,
   };
 };
 
-const actAddUserFailed = (error) => {
+const actListUserFailed = (error) => {
   return {
-    type: ActionType.ADD_USER_FAILED,
+    type: ActionType.LIST_USER_FAILED,
     payload: error,
   };
 };

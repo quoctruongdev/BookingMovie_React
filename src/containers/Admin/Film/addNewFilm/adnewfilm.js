@@ -37,12 +37,12 @@ export default function AdNewFilm() {
       danhGia: "",
       hinhAnh: {},
       maNhom: "GP10",
-    },
-    {
-      onSubmit: (value) => {
-        console.log("value", value);
-      },
     }
+    // {
+    //   onSubmit: (value) => {
+    //     console.log("value", value);
+    //   },
+    // }
   );
 
   const handleOnchange = (e) => {
@@ -132,11 +132,11 @@ export default function AdNewFilm() {
         size={componentSize}
       >
         <h3>Thêm phim mới</h3>
-        <Form.Item label="Form Size" name="size">
+        <Form.Item label="Kích thước" name="size">
           <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="default">Default</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
+            <Radio.Button value="small">Nhỏ</Radio.Button>
+            <Radio.Button value="default">Vừa</Radio.Button>
+            <Radio.Button value="large">Lớn</Radio.Button>
           </Radio.Group>
         </Form.Item>
         <Form.Item label="Tên phim">

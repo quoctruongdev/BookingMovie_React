@@ -39,10 +39,10 @@ export default function SideBar(props) {
     <BrowserRouter>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-          <div className="logo p-2 ">
+          <div className="logo p-2 flex justify-center ">
             <a href="/#">
               <img
-                src="/asset/img/iconMovie.png"
+                src="/asset/img/logo1.png"
                 style={{ height: 40, width: 40 }}
               />
             </a>

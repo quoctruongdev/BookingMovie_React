@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Sidebar from "./_component/sidebar";
 
 function LayoutAdmin(props) {
@@ -33,11 +33,16 @@ export default function AdminTemplate({ Component, ...props }) {
   return (
     <Route
       {...props}
-      render={(propsRoute) => (
-        <LayoutAdmin>
-          <Component {...propsRoute} />
-        </LayoutAdmin>
-      )}
+      render={(propsRoute) => {
+        if (localStorage.getItem("UserAdmin")) {
+          return (
+            <LayoutAdmin>
+              <Component {...propsRoute} />
+            </LayoutAdmin>
+          );
+        }
+        return <Redirect to="/auth" />;
+      }}
     />
   );
 }

@@ -3,20 +3,16 @@ import { actAuthApi } from "./modules/actions";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "./../../../components/Loader";
 
-export default function AuthPage(props) {
-  const [state, setState] = useState({
-    taiKhoan: "",
-    matKhau: "",
-  });
+function AuthPage(props) {
+  const [state, setState] = useState({ taiKhoan: "", matKhau: "" });
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.authReducer.loading);
   const error = useSelector((state) => state.authReducer.error);
-  const data = useSelector((state) => state.authReducer.data);
 
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setState({
-      ...state, //bên hook phải clone lại
+      ...state, 
       [name]: value,
     });
   };
@@ -75,9 +71,6 @@ export default function AuthPage(props) {
               className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-200 text-gray-900"
             />
             {renderNoti()}
-            {/* <div className="flex justify-end text-xs dark:text-coolGray-400">
-              <a href="#">Forgot Password?</a>
-            </div> */}
           </div>
           <button className="block w-full p-3 text-center rounded-sm text- bg-indigo-700   ">
             Sign in
@@ -119,13 +112,9 @@ export default function AuthPage(props) {
             </svg>
           </button>
         </div>
-        {/* <p className="text-xs text-center sm:px-6 dark:text-coolGray-400">
-          Don't have an account? */}
-        {/* <a href="#" className="underline dark:text-coolGray-100">
-            Sign up
-          </a> */}
-        {/* </p> */}
       </div>
     </div>
   );
 }
+
+export default AuthPage;

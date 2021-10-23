@@ -5,7 +5,8 @@ import { renderRouteHome, renderRouteAdmin } from "./routes";
 import { Suspense, lazy } from "react";
 import Loader from "./components/Loader";
 import ScrollToTop from "./components/ScrollToTop";
-import { actTryLogin } from "./containers/Home/LoginPage/modules/actions";
+// import { actTryLogin } from "./containers/Home/LoginPage/modules/actions";
+import { actTryLogin } from "./containers/Admin/AuthPage/modules/actions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 

@@ -1,7 +1,6 @@
 import * as ActionType from "./constants";
 import { api } from "./../../../../utils/apiUtils";
 
-//Giả sử BE trả về exp time: 3600000 (1 giờ)
 const TIME_EXP = 3600000;
 
 export const actAuthApi = (user, history) => {
@@ -21,8 +20,6 @@ export const actAuthApi = (user, history) => {
             },
           });
         }
-
-        //thời gian hết phiên làm việc
         //lưu exp xuống localStorage
         const date = new Date().getTime();
         const exp = date + TIME_EXP;
