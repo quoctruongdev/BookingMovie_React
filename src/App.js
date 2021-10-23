@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 function App(props) {
   const dispatch = useDispatch();
   useEffect(() => {
-    //dispatch actTryLogin
     dispatch(actTryLogin(props.history));
   }, []);
 
@@ -36,6 +35,10 @@ function App(props) {
         <Route
           path="/login"
           component={lazy(() => import("./containers/Home/LoginPage"))}
+        />
+        <Route
+          path="/signup"
+          component={lazy(() => import("./containers/Home/SignUpPage"))}
         />
         <Route
           path=""

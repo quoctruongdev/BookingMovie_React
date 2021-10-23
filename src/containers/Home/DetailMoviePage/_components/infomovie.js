@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default class InfoMovie extends Component {
   render() {
@@ -29,9 +30,9 @@ export default class InfoMovie extends Component {
           <span> • </span>
           <span>{new Date(dataPhim?.ngayKhoiChieu).toLocaleDateString()}</span>
         </div>
-        <button type="button" class=" btn btn-danger mt-4" id="mybtn-1">
+        <Link to="/login" type="button" class=" btn btn-danger mt-4" id="mybtn-1">
           Mua vé
-        </button>
+        </Link>
       </div>
     );
   }

@@ -1,8 +1,8 @@
 .carousel {
   background-color: rgb(34, 34, 34);
   font-family: "Roboto";
-  height: 475px;
-  padding: 80px 0 30px 0;
+  height: 400px;
+  padding: 10px 0;
 }
 .carousel-wrapper {
   position: relative;
@@ -10,8 +10,6 @@
   height: 380px;
 }
 .carousel-bg {
-  /* background-image: linear-gradient(to bottom, rgba(43, 43, 44, 0.1), rgba(20, 9, 1, 0.151)); */
-  /* // url("../img/movie1.jpg"); */
   position: absolute;
   top: 0px;
   right: 0px;
@@ -46,16 +44,12 @@
   opacity: 0;
 }
 .detail-poster {
-  /* background-color: red; */
   position: relative;
   height: 100%;
-  /* top:0; */
-  /* left: 0; */
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
   object-position: left top;
-  /* z-index: 9999; */
 }
 
 .playBtn {
@@ -77,7 +71,6 @@
 }
 
 .carousel .info-movie {
-  /* width: 700px; */
   position: relative;
   color: white;
 }
@@ -91,8 +84,13 @@
 }
 
 #mybtn-1 {
-  background-color: rgb(248, 68, 100);
+  color: white;
   border-color: rgb(248, 68, 100);
+  width: 142px;
+  height: 44px;
+}
+
+#mybtn-1:hover {
   color: white;
 }
 .content .btn-danger {
@@ -261,6 +259,35 @@
 
 .schedule #mybtn-1 {
   padding: 8px 35px;
+}
+
+
+.modal-content {
+  top: 100px;
+}
+
+.modal-dialog {
+  max-width: 900px;
+  margin: 0px auto !important;
+}
+
+.modal-body {
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important ;
+}
+
+.close {
+  position: absolute;
+  right: -30px;
+  top: 0;
+  z-index: 999;
+  font-size: 2rem;
+  font-weight: normal;
+  color: #fff;
+  opacity: 1;
+  background: rebeccapurple;
+  border: red;
 }
 
 /* ====== Reponsive ====== */

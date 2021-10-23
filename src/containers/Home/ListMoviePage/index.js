@@ -5,7 +5,7 @@ export default function ListMoviePage(props) {
   return (
     <div className="list__Film">
       <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container py-24 mx-auto">
           <MultipleRows />
         </div>
       </section>

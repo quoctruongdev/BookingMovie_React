@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { actLogout } from "../LoginPage/modules/actions";
 import { connect } from "react-redux";
+import Loader from "../../../components/Loader";
 
 class MyPage extends Component {
   render() {
     if (localStorage.getItem("User")) {
       return (
-        <div style={{ padding: "80px 0 40px 0" }}>
-          MyPage
-          <button
-            className="btnLogOut btn btn-danger"
-            onClick={() => {
-              this.props.logOut(this.props.history);
-            }}
-          >
-            Đăng xuất
-          </button>
+        <div
+          style={{
+            backgroundColor: "white",
+            height: "50vh",
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
+          <h1>Comming soon</h1>
         </div>
       );
     }
@@ -25,12 +25,4 @@ class MyPage extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logOut: (history) => {
-      dispatch(actLogout(history));
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(MyPage);
+export default MyPage;

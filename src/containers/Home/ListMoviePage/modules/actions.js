@@ -5,7 +5,7 @@ export const actFetchListMovie = () => {
   return (dispatch) => {
     dispatch(actListMovieRequest());
     apiFront
-      .get("QuanLyPhim/LayDanhSachPhim?maNhom=GP03")
+      .get("QuanLyPhim/LayDanhSachPhim?maNhom=GP11")
       .then((result) => {
         dispatch(actListMovieSuccess(result.data.content));
       })

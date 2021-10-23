@@ -89,7 +89,7 @@ class BookingTicketPage extends Component {
           <div
             className="bookingMovie "
             style={{
-              backgroundImage: `linear-gradient(to bottom, rgba(43, 43, 44, 0.637), rgba(20, 9, 1, 0.719)), url("../img/bg-2.jpg")`,
+              backgroundImage: `linear-gradient(to bottom, rgba(43, 43, 44, 0.637), rgba(20, 9, 1, 0.719)), url("/asset/img/bg-2.jpg")`,
             }}
           >
             <div className="bookingMovie__container">

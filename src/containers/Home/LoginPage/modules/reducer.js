@@ -28,22 +28,10 @@ const logInReducer = (state = initialState, action) => {
       state.errorLogin = action.payload;
       return { ...state };
 
-    case ActionType.SIGNUP_REQUEST:
-      state.loading = true;
-      state.dataSignUp = null;
-      state.errorSignUp = null;
-      return { ...state };
-
-    case ActionType.SIGNUP_SUCCESS:
+    case ActionType.LOGIN_RESET:
       state.loading = false;
-      state.dataSignUp = action.payload;
-      state.errorSignUp = null;
-      return { ...state };
-
-    case ActionType.SIGNUP_FAILED:
-      state.loading = false;
-      state.dataSignUp = null;
-      state.errorSignUp = action.payload;
+      state.dataLogin = null;
+      state.errorLogin = null;
       return { ...state };
 
     default:

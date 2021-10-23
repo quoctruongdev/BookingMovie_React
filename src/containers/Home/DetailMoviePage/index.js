@@ -16,12 +16,6 @@ class DetailMoviePage extends Component {
     await this.props.fetchDataPhim(id);
   };
 
-  // componentDidUpdate(prevProps) {
-  //   // if (prevProps.activeTab !== this.props.activeTab) {
-  //   //   this.props.fetchDataCumRap(this.props.activeTab);
-  //   // }
-  // }
-
   render() {
     const { loading, dataTongHop, dataCumRap } = this.props;
     if (loading) return <Loader />;
@@ -29,7 +23,7 @@ class DetailMoviePage extends Component {
     return (
       <div>
         <Carousel dataPhim={dataTongHop} />
-        <Schedule dataCumRap={dataCumRap} dataTongHop={dataTongHop} />
+        <Schedule dataTongHop={dataTongHop} />
       </div>
     );
   }

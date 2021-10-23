@@ -12,6 +12,7 @@ import {
   faPhone,
   faPrint,
 } from "@fortawesome/free-solid-svg-icons";
+import "./style.css";
 
 export default function Footer() {
   return (
@@ -52,11 +53,14 @@ export default function Footer() {
           </div>
         </section>
 
-        <section>
+        <section className="footer-bottom">
           <div className="container text-left text-md-start mt-5">
-            <div className="row mt-3">
-              <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4 text-left">
-                <h6 className="text-uppercase fw-bold mb-4">
+            <div className="row mt-3 text-center">
+              <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4 ">
+                <h6
+                  className="text-uppercase fw-bold mb-4"
+                  style={{ color: "#cccccc" }}
+                >
                   <i className="fas fa-gem me-3" />
                   Về công ty
                 </h6>
@@ -83,7 +87,10 @@ export default function Footer() {
               </div>
 
               <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold mb-4">
+                <h6
+                  className="text-uppercase fw-bold mb-4"
+                  style={{ color: "#cccccc" }}
+                >
                   Điều khoản sử dụng
                 </h6>
                 <p>
@@ -109,7 +116,12 @@ export default function Footer() {
               </div>
 
               <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold mb-4">Đối tác</h6>
+                <h6
+                  className="text-uppercase fw-bold mb-4"
+                  style={{ color: "#cccccc" }}
+                >
+                  Đối tác
+                </h6>
                 <p>
                   <NavLink to="/" className="text-reset">
                     CGV
@@ -133,7 +145,12 @@ export default function Footer() {
               </div>
 
               <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                <h6 className="text-uppercase fw-bold mb-4">Liên hệ</h6>
+                <h6
+                  className="text-uppercase fw-bold mb-4"
+                  style={{ color: "#cccccc" }}
+                >
+                  Liên hệ
+                </h6>
                 <p>
                   <FontAwesomeIcon className="icon mr-1" icon={faHome} />
                   10 Pasture, P5, Quận 3, HCM

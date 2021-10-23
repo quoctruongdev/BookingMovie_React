@@ -1,6 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import "./style.css";
 
-export default function Loader() {
-  return <div className="loader"></div>;
+export default class Loader extends Component {
+  render() {
+    return (
+      <div className="loading">
+        <div></div>
+        <div></div>
+      </div>
+    );
+  }
 }

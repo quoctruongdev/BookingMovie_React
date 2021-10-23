@@ -43,7 +43,7 @@ function SamplePrevArrow(props) {
 
 const settings = {
   className: "cover  ",
-  centerMode: true,
+  centerMode: false,
   infinite: true,
   centerPadding: "60px",
   slidesToShow: 3,

@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 import InfoMovie from "./infomovie";
-import Iframe from "react-iframe";
-import "./../../_component/Modal-video/style.css";
+import ReactPlayer from "react-player";
 
 export default class Carousel extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({ isOpen: true });
+  }
   render() {
     const { dataPhim } = this.props;
     return (
@@ -29,6 +39,7 @@ export default class Carousel extends Component {
                   data-toggle="modal"
                   data-src={dataPhim?.trailer}
                   data-target="#myModal"
+                  onClick={this.openModal}
                 >
                   <img
                     className="playBtn"
@@ -54,18 +65,17 @@ export default class Carousel extends Component {
                           className="close"
                           data-dismiss="modal"
                           aria-label="Close"
+                          onClick={() => this.setState({ isOpen: false })}
                         >
                           <span aria-hidden="true">×</span>
                         </button>
 
                         <div className="embed-responsive embed-responsive-16by9">
-                          <Iframe
+                          <ReactPlayer
                             url={dataPhim?.trailer}
-                            width="450px"
-                            height="450px"
-                            id="myId"
-                            className="myClassname
-                            "
+                            playing={this.state.isOpen}
+                            width="100%"
+                            height="100%"
                           />
                         </div>
                       </div>

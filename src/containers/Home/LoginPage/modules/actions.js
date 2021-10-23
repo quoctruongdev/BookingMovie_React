@@ -5,6 +5,7 @@ import {apiFront} from "../../../../utils/apiUtils";
 const TIME_EXP = 3600000;
 
 export const actFetchLogin = (user, history) => {
+  console.log("actFetchLogin-history", history);
   return (dispatch) => {
     dispatch(actLoginRequest());
 
@@ -107,39 +108,8 @@ const actLoginFailed = (error) => {
   };
 };
 
-export const actFetchSignUp = (user, history) => {
-  return (dispatch) => {
-    dispatch(actSignUpRequest());
-
-    apiFront
-      .post("QuanLyNguoiDung/DangKy", user)
-      .then((result) => {
-        //redirect dashboard
-        history.replace("/login");
-        dispatch(actSignUpSuccess(result.data.content));
-      })
-      .catch((error) => {
-        dispatch(actSignUpFailed(error));
-      });
-  };
-};
-
-const actSignUpRequest = () => {
+export const actLoginReset = () => {
   return {
-    type: ActionType.SIGNUP_REQUEST,
-  };
-};
-
-const actSignUpSuccess = (data) => {
-  return {
-    type: ActionType.SIGNUP_SUCCESS,
-    payload: data,
-  };
-};
-
-const actSignUpFailed = (error) => {
-  return {
-    type: ActionType.SIGNUP_FAILED,
-    payload: error,
+    type: ActionType.LOGIN_RESET,
   };
 };

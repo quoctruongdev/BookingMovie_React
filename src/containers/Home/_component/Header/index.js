@@ -1,104 +1,218 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { Component } from "react";
+import { NavLink, withRouter } from "react-router-dom";
+import "./style.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faBars,
+  faSignInAlt,
+  faSignOutAlt,
+  faUserPlus,
+} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { actLogout } from "../../LoginPage/modules/actions";
 
-export default function HeaderComponent() {
-  return (
-    <header
-      className="  dark:bg-coolGray-800 dark:text-coolGray-100 fixed text-white w-full z-50  "
-      style={{ backgroundColor: "#323545" , top:"0"}}
-    >
-      <div className=" flex justify-between h-16 mx-auto my-auto container">
-        <NavLink
-          exact
-          to="/"
-          activeClassName="active"
-          aria-label="quay lại trang chủ"
-          className="flex items-center p-2"
-        >
-          <img
-            src={"/asset/img/iconMovie.png"}
-            style={{ width: "50px", height: "50px" }}
-            alt="iconMovie"
-          />
-        </NavLink>
-        <ul className="items-stretch hidden space-x-3 lg:flex">
-          <li className="flex">
-            <NavLink
-              activeClassName="active"
-              to="/list-movie"
-              className="flex items-center px-4 -mb-4  dark:border-transparent dark:text-white-400 dark:border-white-400 "
-            >
-              <font style={{ verticalAlign: "inherit" }}>
-                <font style={{ verticalAlign: "inherit" }}>Đang chiếu</font>
-              </font>
-            </NavLink>
-          </li>
-
-          <li className="flex">
-            <NavLink
-              activeClassName="active"
-              to="#"
-              className="flex items-center px-4 -mb-4  dark:border-transparent dark:text-white-400 dark:border-white-400"
-            >
-              <font style={{ verticalAlign: "inherit" }}>
-                <font style={{ verticalAlign: "inherit" }}>Sắp chiếu</font>
-              </font>
-            </NavLink>
-          </li>
-
-          <li className="flex">
-            <NavLink
-              activeClassName="active"
-              to="/about"
-              className="flex items-center px-4 -mb-4 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
-            >
-              <font style={{ verticalAlign: "inherit" }}>
-                <font style={{ verticalAlign: "inherit" }}>Lịch chiếu</font>
-              </font>
-            </NavLink>
-          </li>
-
-          <li className="flex">
-            <NavLink
-              activeClassName="active"
-              to="/about"
-              className="flex items-center px-4 -mb-4  dark:border-transparent dark:text-violet-400 dark:border-violet-400"
-            >
-              <font style={{ verticalAlign: "inherit" }}>
-                <font style={{ verticalAlign: "inherit" }}>Khuyến mãi</font>
-              </font>
-            </NavLink>
-          </li>
-        </ul>
-        <div className="items-center flex-shrink-0 hidden lg:flex">
-          <button className="self-center px-8 py-3 rounded">
-            <font style={{ verticalAlign: "inherit" }}>
-              <font style={{ verticalAlign: "inherit" }}>Đăng nhập</font>
-            </font>
-          </button>
-          <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-coolGray-900">
-            <font style={{ verticalAlign: "inherit" }}>
-              <font style={{ verticalAlign: "inherit" }}>Đăng ký</font>
-            </font>
-          </button>
-        </div>
-        <button className="p-4 lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6 dark:text-coolGray-100"
+class HeaderComponent extends Component {
+  renderBtn = () => {
+    if (localStorage.getItem("User")) {
+      return (
+        <>
+          <button
+            type="button"
+            className="btn btn-outline-danger ml-2  textBtn logoutBtn"
+            onClick={() => {
+              this.props.logOut(this.props.history);
+              // console.log(this.props);
+            }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-      </div>
-    </header>
-  );
+            Đăng xuất
+          </button>
+          <button
+            className="imgBtn btn btn-outline-danger logoutBtn"
+            onClick={() => {
+              this.props.logOut(this.props.history);
+            }}
+          >
+            <FontAwesomeIcon className="icon-signUp" icon={faSignOutAlt} />
+          </button>
+        </>
+      );
+    }
+    return (
+      <>
+        <Link to="/signup" type="button" class="btn btn-outline-danger textBtn">
+          Đăng ký
+        </Link>
+        <Link
+          to="/login"
+          type="button"
+          className="btn btn-outline-danger ml-2  textBtn"
+        >
+          Đăng nhập
+        </Link>
+
+        <Link to="/login" className="imgBtn btn btn-outline-danger">
+          <FontAwesomeIcon className="icon-signIn" icon={faSignInAlt} />
+        </Link>
+        <Link to="/signup" className="imgBtn btn btn-outline-danger">
+          <FontAwesomeIcon className="icon-signUp" icon={faUserPlus} />
+        </Link>
+      </>
+    );
+  };
+  render() {
+    return (
+      <header>
+        <div
+          className="header-top"
+          style={{ backgroundColor: `rgb(51, 53, 69)`, height: "80px" }}
+        >
+          <div className="container" style={{ height: "100%" }}>
+            <div
+              className="row d-flex justify-content-between"
+              style={{ height: "100%" }}
+            >
+              <div className="d-flex align-items-center myLogo">
+                <Link to="/">
+                  <img
+                    src="/asset/img/logo1.png"
+                    alt="logo"
+                    style={{ width: "50px", height: "50px" }}
+                  />
+                </Link>
+                <input
+                  className="ml-3 timKiem"
+                  type="search"
+                  placeholder="Tên rạp, tên phim"
+                  style={{}}
+                />
+                <button className="btn btn-outline-danger" id="search">
+                  <FontAwesomeIcon className="icon" icon={faSearch} />
+                </button>
+              </div>
+              <div className="d-flex align-items-center">
+                {this.renderBtn()}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="header-bottom"
+          style={{ backgroundColor: `rgb(31, 37, 51)` }}
+        >
+          <div className="container">
+            <div className="row d-flex justify-content-between  align-items-baseline">
+              <nav className="navbar navbar-expand-lg navbar-light">
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarTogglerDemo01"
+                  aria-controls="navbarTogglerDemo01"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <FontAwesomeIcon
+                    className="icon"
+                    icon={faBars}
+                    style={{ color: `rgb(248, 68, 100)` }}
+                  />
+                </button>
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarTogglerDemo01"
+                >
+                  <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li className="nav-item active mx-2">
+                      <NavLink
+                        id="menu"
+                        exact
+                        activeClassName="active"
+                        className="nav-link"
+                        to="/"
+                      >
+                        Trang chủ
+                      </NavLink>
+                    </li>
+                    <li className="nav-item mx-2">
+                      <NavLink
+                        id="menu"
+                        activeClassName="active"
+                        className="nav-link"
+                        to="/all-movie"
+                      >
+                        Danh sách phim
+                      </NavLink>
+                    </li>
+                    <li className="nav-item mx-2">
+                      <NavLink
+                        id="menu"
+                        activeClassName="active"
+                        className="nav-link"
+                        to="/list-cine"
+                      >
+                        Danh sách rạp
+                      </NavLink>
+                    </li>
+                    <li className="nav-item mx-2">
+                      <NavLink
+                        id="menu"
+                        activeClassName="active"
+                        className="nav-link"
+                        to="/news"
+                      >
+                        Tin tức
+                      </NavLink>
+                    </li>
+                    <li className="nav-item mx-2">
+                      <NavLink
+                        id="menu"
+                        activeClassName="active"
+                        className="nav-link"
+                        to="/events"
+                      >
+                        Sự kiện
+                      </NavLink>
+                    </li>
+                    <li className="nav-item mx-2">
+                      <NavLink
+                        id="menu"
+                        activeClassName="active"
+                        className="nav-link"
+                        to="/sale"
+                      >
+                        Khuyến mãi
+                      </NavLink>
+                    </li>
+                    <li className="nav-item mx-2">
+                      <NavLink
+                        id="menu"
+                        activeClassName="active"
+                        className="nav-link"
+                        to="/mypage"
+                      >
+                        Tài khoản
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+    );
+  }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logOut: (history) => {
+      dispatch(actLogout(history));
+    },
+  };
+};
+
+const ConnectedComponent = connect(null, mapDispatchToProps)(HeaderComponent);
+export default withRouter (ConnectedComponent);

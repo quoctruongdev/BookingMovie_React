@@ -3,13 +3,14 @@ import React, { useSelector, useDispatch } from "react-redux";
 import Loader from "./../../../../components/Loader";
 import { actAddCarousel } from "./modules/actions";
 import { useEffect } from "react";
+import "./style.css";
 
 const contentStyle = {
-  height: "650px",
+  height: "470px",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
-  background: "#364d79",
+  background: `rgb(51, 53, 69)`,
   backgroundPosition: "center",
   backgroundSize: "100%",
   backgroundRepeat: "no-repeat",
@@ -22,18 +23,15 @@ export default function HomeCarousel() {
 
   useEffect(() => {
     dispatch(actAddCarousel());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderCarousel = () => {
     return data?.map((item) => {
       return (
-        <div key={item.maBanner} className="pt-16">
-          <div
+        <div key={item.maBanner} className="myCarousel">
+          <div className="myBanner"
             style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}
-          >
-            {/* <img src={item.hinhAnh} className="w-full opacity-100   " alt="" /> */}
-          </div>
+          ></div>
         </div>
       );
     });

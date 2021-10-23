@@ -1,5 +1,5 @@
 .active {
-  color: red !important;
+  color: white !important;
 }
 
 .ant-carousel .slick-dots li button {
@@ -37,7 +37,7 @@ body {
 }
 
 .containerx {
-  transition: 300ms;
+  /* transition: 300ms; */
 }
 
 .intro {
@@ -68,15 +68,6 @@ a:hover {
 
 .containerx {
   display: flex;
-  /* -ms-flex-wrap: wrap; */
-  /* flex-wrap: wrap; */
-  /* max-width: 100%;
-      margin-top: 10vh;
-      margin-left: auto; */
-  /* margin-right: auto; */
-  /* -webkit-box-pack: center; */
-  /* -ms-flex-pack: center;
-      justify-content: center; */
 }
 
 .movie-card {
@@ -156,7 +147,8 @@ a:hover {
 .imax-logo {
   width: 50px;
   height: 15px;
-  background: url("https://6a25bbd04bd33b8a843e-9626a8b6c7858057941524bfdad5f5b0.ssl.cf5.rackcdn.com/media_kit/3e27ede823afbf139c57f1c78a03c870.jpg") no-repeat;
+  background: url("https://6a25bbd04bd33b8a843e-9626a8b6c7858057941524bfdad5f5b0.ssl.cf5.rackcdn.com/media_kit/3e27ede823afbf139c57f1c78a03c870.jpg")
+    no-repeat;
   background-size: contain;
   display: table-cell;
   float: right;
