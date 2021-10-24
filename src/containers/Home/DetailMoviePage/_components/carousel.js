@@ -74,6 +74,7 @@ export default class Carousel extends Component {
                           <ReactPlayer
                             url={dataPhim?.trailer}
                             playing={this.state.isOpen}
+                            controls="true"
                             width="100%"
                             height="100%"
                           />

@@ -23,7 +23,6 @@ class HeaderComponent extends Component {
             className="btn btn-outline-danger ml-2  textBtn logoutBtn"
             onClick={() => {
               this.props.logOut(this.props.history);
-              // console.log(this.props);
             }}
           >
             Đăng xuất
@@ -215,4 +214,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const ConnectedComponent = connect(null, mapDispatchToProps)(HeaderComponent);
-export default withRouter (ConnectedComponent);
+export default withRouter(ConnectedComponent);
