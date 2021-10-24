@@ -82,7 +82,7 @@ class HeaderComponent extends Component {
                   />
                 </Link>
                 <input
-                  className="ml-3 timKiem"
+                  className="ml-3 timKiem p-1"
                   type="search"
                   placeholder="Tên rạp, tên phim"
                   style={{}}
@@ -215,4 +215,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const ConnectedComponent = connect(null, mapDispatchToProps)(HeaderComponent);
-export default withRouter (ConnectedComponent);
+export default withRouter(ConnectedComponent);

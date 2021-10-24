@@ -6,12 +6,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import { SearchOutlined } from "@ant-design/icons";
 import { actFetchListUser } from "./modules/actions";
 
-export default function Film(props) {
-  console.log(props);
+export default function User(props) {
   const { Search } = Input;
   const onSearch = (value) => console.log(value);
 
   const data = useSelector((state) => state.listUserReducer.data);
+
+  console.log(data);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -71,8 +72,6 @@ export default function Film(props) {
     },
   ];
 
-  const data2 = data;
-
   function onChange(pagination, filters, sorter, extra) {
     console.log("params", pagination, filters, sorter, extra);
   }
@@ -81,7 +80,7 @@ export default function Film(props) {
     <div className="container text text-4xl  ">
       <h3>Quản lý người dùng</h3>
       <Button
-        className="mb-5"
+        className="mb-3"
         onClick={() => {
           props.history.push("/dashboard/adduser");
         }}
@@ -89,14 +88,14 @@ export default function Film(props) {
         Thêm người dùng
       </Button>
       <Search
-        className="mb-5"
+        className="mb-3"
         placeholder="input search text"
         enterButton={<SearchOutlined />}
         size="large"
         onSearch={onSearch}
       />
 
-      <Table columns={columns} dataSource={data2} onChange={onChange} />
+      <Table columns={columns} dataSource={data} onChange={onChange} />
     </div>
   );
 }

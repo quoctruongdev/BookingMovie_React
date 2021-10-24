@@ -101,7 +101,7 @@ export default function Film(props) {
     <div className="container text text-4xl  ">
       <h3>Quản lý phim</h3>
       <Button
-        className="mb-5"
+        className="mb-2"
         onClick={() => {
           props.history.push("/dashboard/addnewfilm");
         }}
@@ -109,7 +109,7 @@ export default function Film(props) {
         Thêm phim
       </Button>
       <Search
-        className="mb-5"
+        className="mb-3"
         placeholder="input search text"
         enterButton={<SearchOutlined />}
         size="large"

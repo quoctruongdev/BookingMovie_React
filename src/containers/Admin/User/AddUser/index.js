@@ -1,22 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-// import moment from "moment";
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-} from "antd";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Form, Input, Select } from "antd";
 import { actAddUser } from "./modules/actions";
+import Loader from "./../../../../components/Loader/";
 
-export default function AddUser(props) {
-  const [componentSize, setComponentSize] = useState("default");
+export default function AddUser() {
+  const data = useSelector((state) => state.addUserReducer.data);
+  const loading = useSelector((state) => state.addUserReducer.loading);
+  const error = useSelector((state) => state.addUserReducer.error);
   const dispatch = useDispatch();
 
   const [state, setState] = useState({
@@ -26,7 +17,7 @@ export default function AddUser(props) {
     email: "",
     soDt: "",
     maNhom: "GP10",
-    maLoaiNguoiDung: "KhachHang",
+    maLoaiNguoiDung: "",
   });
 
   const handleAddUser = (e) => {
@@ -40,6 +31,33 @@ export default function AddUser(props) {
       [name]: value,
     });
   };
+
+  const handleSelect = (value) => {
+    setState({
+      ...state,
+      maLoaiNguoiDung: value,
+    });
+  };
+  if (loading) return <Loader />;
+
+  const renderNotice = () => {
+    if (!error && data) {
+      return (
+        <div className="alert alert-success">
+          Bạn đã thêm tài khoản thành công
+        </div>
+      );
+    }
+
+    return (
+      error && (
+        <div className="alert alert-danger">
+          {error?.response?.data?.content}
+        </div>
+      )
+    );
+  };
+
   console.log("object", state);
   return (
     <>
@@ -52,13 +70,9 @@ export default function AddUser(props) {
           span: 14,
         }}
         layout="horizontal"
-        initialValues={{
-          size: componentSize,
-        }}
-        // onValuesChange={onFormLayoutChange}
-        size={componentSize}
       >
-        <h3>Thêm người dùng</h3>
+        <h3 className=" text-center">Thêm người dùng</h3>
+        {renderNotice()}
         <Form.Item label="Tài khoản">
           <Input name="taiKhoan" onChange={handleOnchange} />
         </Form.Item>
@@ -75,12 +89,14 @@ export default function AddUser(props) {
           <Input name="soDt" onChange={handleOnchange} />
         </Form.Item>
         <Form.Item label="Mã người dùng">
-          <Input name="maLoaiNguoiDung" onChange={handleOnchange} />
+          <Select placeholder="Chọn loại người dùng" onChange={handleSelect}>
+            <Select.Option value="QuanTri">Quản trị</Select.Option>
+            <Select.Option value="KhachHang">Khách hàng</Select.Option>
+          </Select>
         </Form.Item>
-
         <Form.Item>
           <button
-            className=" bg-indigo-800 p-2 text-white ml-48  "
+            className=" bg-indigo-800 p-2 text-white ml-48  rounded  "
             type="submit"
           >
             Thêm người dùng
