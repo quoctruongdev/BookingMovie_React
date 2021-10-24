@@ -11,6 +11,8 @@ import allMovieReducer from "../../containers/Home/AllMoviePage/modules/reducer"
 import addMovieReducer from "../../containers/Admin/Film/addNewFilm/modules/reducer";
 import listUserReducer from "../../containers/Admin/User/modules/reducer";
 import addUserReducer from "../../containers/Admin/User/AddUser/modules/reducer";
+// import addUserReducer from "../../containers/Admin/User/modules/reducer";
+import userHistoryReducer from "../../containers/Home/MyPage/modules/reducer";
 
 const rootReducer = combineReducers({
   addCarouselReducer,
@@ -25,6 +27,7 @@ const rootReducer = combineReducers({
   addMovieReducer,
   listUserReducer,
   addUserReducer,
+  userHistoryReducer,
 });
 
 export default rootReducer;

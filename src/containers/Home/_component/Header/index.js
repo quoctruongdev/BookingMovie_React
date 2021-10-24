@@ -23,7 +23,6 @@ class HeaderComponent extends Component {
             className="btn btn-outline-danger ml-2  textBtn logoutBtn"
             onClick={() => {
               this.props.logOut(this.props.history);
-              // console.log(this.props);
             }}
           >
             Đăng xuất

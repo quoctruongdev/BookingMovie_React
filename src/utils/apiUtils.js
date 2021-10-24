@@ -33,7 +33,7 @@ apiFront.interceptors.request.use(
       ...config.headers,
       TokenCybersoft: TOKEN_CYBERSOFT,
       Authorization: localStorage.getItem("User")
-        ? "Bearer" + JSON.parse(localStorage.getItem("User")).accessToken
+        ? "Bearer " + JSON.parse(localStorage.getItem("User")).accessToken
         : "",
     };
 

@@ -1,4 +1,3 @@
-import { concat } from "lodash";
 import React, { Component } from "react";
 import "./style.css";
 import { actFetchSignUp, actSignUpReset } from "./modules/actions";
@@ -36,6 +35,7 @@ class SignUpPage extends Component {
       formSignUpValid: false,
     };
   }
+
 
   componentWillUnmount() {
     this.props.reset();
@@ -250,7 +250,7 @@ class SignUpPage extends Component {
         <button
           className="signUpBtn login-form-btn"
           type="submit"
-          // disabled={!this.state.formSignUpValid}
+          disabled={!this.state.formSignUpValid}
         >
           Đăng ký
         </button>
