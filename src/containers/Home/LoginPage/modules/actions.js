@@ -5,7 +5,6 @@ import {apiFront} from "../../../../utils/apiUtils";
 const TIME_EXP = 3600000;
 
 export const actFetchLogin = (user, history) => {
-  console.log("actFetchLogin-history", history);
   return (dispatch) => {
     dispatch(actLoginRequest());
 
@@ -35,7 +34,6 @@ export const actFetchLogin = (user, history) => {
         //Luu trang thai login
         localStorage.setItem("User", JSON.stringify(result.data.content));
 
-        //redirect dashboard
         history.replace("/mypage");
         dispatch(actLoginSuccess(result.data.content));
       })
@@ -50,7 +48,7 @@ export const actLogout = (history) => {
   localStorage.removeItem("User");
   localStorage.removeItem("exp");
 
-  //redirect ve trang /auth
+  //redirect ve trang /
   history.replace("/");
 
   //clear reducer

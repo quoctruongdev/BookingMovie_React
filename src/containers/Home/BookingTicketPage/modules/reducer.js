@@ -40,9 +40,7 @@ const bookingTicketReducer = (state = initState, action) => {
     }
 
     case ActionType.CLEAR_GHE_DANG_CHON: {
-      console.log("before", state.dsGheDangDat );
       state.dsGheDangDat = [];
-      console.log("after", state.dsGheDangDat );
       return { ...state };
     }
     case ActionType.PHONGVE_INFO_REQUEST: {

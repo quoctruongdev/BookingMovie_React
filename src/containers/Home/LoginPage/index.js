@@ -25,7 +25,7 @@ class LoginPage extends Component {
       formLoginValid: false,
     };
   }
-
+  
   componentWillUnmount() {
     this.props.actLoginReset();
   }
@@ -145,11 +145,11 @@ class LoginPage extends Component {
         <button
           className="login-form-btn"
           type="submit"
-          // disabled={!this.state.formLoginValid}
+          disabled={!this.state.formLoginValid}
         >
           Đăng nhập
         </button>
-        <Link to="/signup" type="button" className="login-form-btn">
+        <Link to="/signup" className="login-form-btn">
           Tạo tài khoản
         </Link>
       </form>
@@ -158,7 +158,6 @@ class LoginPage extends Component {
 
   render() {
     if (this.props.loading) return <Loader />;
-    console.log(this.state.errorsInput);
     return <section id="entry-page">{this.currentView()}</section>;
   }
 }

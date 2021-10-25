@@ -83,6 +83,17 @@ html {
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* iPads (portrait and landscape) */
+  .container {
+    max-width: 1080px !important;
+  }
+
+  .textBtn {
+    color: rgb(248, 68, 100);
+    border-color: rgb(248, 68, 100);
+    width: 150px;
+    height: 35px;
+    display: inline-block;
+  }
 }
 
 /*iPhone 6 Portrait*/
@@ -135,6 +146,9 @@ html {
 
 @media only screen and (min-width: 767px) {
   /* Desktops and laptops */
+  .container {
+    max-width: 1080px !important;
+  }
 }
 
 @media screen and (max-width: 767.98px) {

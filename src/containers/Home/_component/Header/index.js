@@ -19,11 +19,9 @@ class HeaderComponent extends Component {
       return (
         <>
           <button
-            type="button"
             className="btn btn-outline-danger ml-2  textBtn logoutBtn"
             onClick={() => {
               this.props.logOut(this.props.history);
-              // console.log(this.props);
             }}
           >
             Đăng xuất
@@ -41,12 +39,11 @@ class HeaderComponent extends Component {
     }
     return (
       <>
-        <Link to="/signup" type="button" class="btn btn-outline-danger textBtn">
+        <Link to="/signup"  class="btn btn-outline-danger textBtn">
           Đăng ký
         </Link>
         <Link
           to="/login"
-          type="button"
           className="btn btn-outline-danger ml-2  textBtn"
         >
           Đăng nhập
@@ -106,7 +103,6 @@ class HeaderComponent extends Component {
               <nav className="navbar navbar-expand-lg navbar-light">
                 <button
                   className="navbar-toggler"
-                  type="button"
                   data-toggle="collapse"
                   data-target="#navbarTogglerDemo01"
                   aria-controls="navbarTogglerDemo01"
