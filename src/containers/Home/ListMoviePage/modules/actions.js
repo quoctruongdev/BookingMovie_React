@@ -15,6 +15,20 @@ export const actFetchListMovie = () => {
   };
 };
 
+export const actFetchListMovie2 = (tenPhim) => {
+  return (dispatch) => {
+    dispatch(actListMovieRequest());
+    apiFront
+      .get(`QuanLyPhim/LayDanhSachPhim?maNhom=GP11&tenPhim=${tenPhim}`)
+      .then((result) => {
+        dispatch(actListMovieSuccess(result.data.content));
+      })
+      .catch((err) => {
+        dispatch(actListMovieFailed(err));
+      });
+  };
+};
+
 const actListMovieRequest = () => {
   return {
     type: ActionType.LIST_MOVIE_REQUEST,

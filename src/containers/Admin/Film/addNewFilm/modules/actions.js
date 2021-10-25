@@ -1,11 +1,12 @@
 import * as ActionType from "./constants";
 import { api } from "./../../../../../utils/apiUtils";
 
-export const actAddMovie = (movie) => {
+export const actAddMovie = (formData) => {
   return (dispatch) => {
     dispatch(actAddMovieRequest());
+
     api
-      .post("QuanLyPhim/CapNhatPhimUpload", movie)
+      .post("QuanLyPhim/ThemPhimUploadHinh", formData)
       .then((result) => {
         dispatch(actAddMovieSuccess(result.data.content));
       })

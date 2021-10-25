@@ -9,7 +9,9 @@ import MovieIcon from "@mui/icons-material/Movie";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PeopleIcon from "@mui/icons-material/People";
+
 import {
+  EditFilled,
   PieChartOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -21,6 +23,8 @@ import DashboardPage from "../../Dashboard";
 import ShowTime from "../../Showtime";
 import AdNewFilm from "../../Film/addNewFilm/adnewfilm";
 import AddUser from "../../User/AddUser";
+import EditUser from "../../User/EditUser/EditUser";
+import EditFilm from "../../Film/EditFilm/EditFilm";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -33,7 +37,6 @@ export default function SideBar(props) {
   const onCollapse = (collapsed) => {
     setState({ collapsed });
   };
-  //   const { collapsed } = this.state;
   const { collapsed } = state;
   return (
     <BrowserRouter>
@@ -47,12 +50,7 @@ export default function SideBar(props) {
               />
             </a>
           </div>
-          <Menu
-            theme="dark"
-            //   defaultSelectedKeys={["1"]}
-            defaultSelectedKeys={props.path}
-            mode="inline"
-          >
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={props.path}>
             <Menu.Item key="1" icon={<PieChartOutlined />}>
               <NavLink exact to="/dashboard">
                 Dashboard
@@ -63,24 +61,28 @@ export default function SideBar(props) {
               <Menu.Item key="2" icon={<PeopleIcon />}>
                 <NavLink to="/dashboard/user">List User</NavLink>
               </Menu.Item>
-              <Menu.Item key="3" icon={<PersonAddIcon />}>
-                <NavLink to="/dashboard/adduser">Add User</NavLink>
+              <Menu.Item accessKey="3" key="3" icon={<PersonAddIcon />}>
+                <NavLink activeClassName="active" to="/dashboard/adduser">
+                  Add User
+                </NavLink>
               </Menu.Item>
-              {/* <Menu.Item key="3">Film</Menu.Item> */}
-              {/* <Menu.Item key="4">Add New Film</Menu.Item> */}
+              <Menu.Item key="4" icon={<EditFilled />}>
+                <NavLink to="/dashboard/edituser:id">Edit User</NavLink>
+              </Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub2" icon={<LocalMoviesIcon />} title="Film">
-              <Menu.Item key="4" icon={<MovieIcon />}>
+              <Menu.Item key="5" icon={<MovieIcon />}>
                 <NavLink to="/dashboard/film">List Film</NavLink>
               </Menu.Item>
-              <Menu.Item key="5" icon={<MovieFilterIcon />}>
+              <Menu.Item key="6" icon={<MovieFilterIcon />}>
                 <NavLink to="/dashboard/addnewfilm">Add New Film</NavLink>
               </Menu.Item>
-              {/* <Menu.Item key="3">Film</Menu.Item> */}
-              {/* <Menu.Item key="4">Add New Film</Menu.Item> */}
+              <Menu.Item key="7" icon={<EditFilled />}>
+                <NavLink to="/dashboard/editfilm/:id">Edit Film</NavLink>
+              </Menu.Item>
             </SubMenu>
-            <Menu.Item key="6" icon={<CalendarViewMonthIcon />}>
+            <Menu.Item key="8" icon={<CalendarViewMonthIcon />}>
               <NavLink to="/dashboard/show">Showtime</NavLink>
             </Menu.Item>
           </Menu>
@@ -130,8 +132,10 @@ export default function SideBar(props) {
             <Route exact path="/dashboard" component={DashboardPage} />
             <Route path="/dashboard/user" component={User} />
             <Route path="/dashboard/adduser" component={AddUser} />
+            <Route path="/dashboard/edituser:id" component={EditUser} />
             <Route path="/dashboard/film" component={Film} />
             <Route path="/dashboard/addnewfilm" component={AdNewFilm} />
+            <Route path="/dashboard/editfilm/:id" component={EditFilm} />
             <Route path="/dashboard/show" component={ShowTime} />
           </Content>
           <Footer style={{ textAlign: "center" }}>

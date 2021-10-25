@@ -1,11 +1,12 @@
 import * as ActionType from "./constants";
 import { api } from "./../../../../../utils/apiUtils";
 
-export const actAddUser = (user) => {
+export const actFetchAddUser = (user) => {
   return (dispatch) => {
     dispatch(actAddUserRequest());
+
     api
-      .post("QuanLyNguoiDung/ThemNguoiDung", user)
+      .post("/QuanLyNguoiDung/ThemNguoiDung", user)
       .then((result) => {
         dispatch(actAddUserSuccess(result.data.content));
       })

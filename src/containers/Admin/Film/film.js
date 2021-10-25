@@ -4,14 +4,26 @@ import { Button, Table, Input } from "antd";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { SearchOutlined } from "@ant-design/icons";
-import { actFetchListMovie } from "../../Home/ListMoviePage/modules/actions";
+import {
+  actFetchListMovie,
+  actFetchListMovie2,
+} from "../../Home/ListMoviePage/modules/actions";
+import { NavLink } from "react-router-dom";
+import { actFetchDeleteMovie } from "./EditFilm/deleteFilm/actions";
 
 export default function Film(props) {
   const { Search } = Input;
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+    if (value.trim() !== "") {
+      return dispatch(actFetchListMovie2(value));
+    } else {
+      return dispatch(actFetchListMovie(value));
+    }
+  };
 
   const data = useSelector((state) => state.listMovieReducer.data);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(actFetchListMovie(props.history));
   }, []);
@@ -77,12 +89,29 @@ export default function Film(props) {
       render: (text, item) => {
         return (
           <Fragment>
-            <a className=" p-2 " href="/">
+            <NavLink
+              key="1"
+              className=" p-2 "
+              to={`/dashboard/editfilm/${item.maPhim}`}
+            >
               <EditIcon color="secondary" />
-            </a>
-            <a href="/">
+            </NavLink>
+
+            <span
+              style={{ cursor: "pointer" }}
+              key="2"
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Bạn có chắc chắn muốn xoá phim" + item.tenPhim
+                  )
+                ) {
+                  dispatch(actFetchDeleteMovie(item.maPhim));
+                }
+              }}
+            >
               <DeleteIcon color="error" />
-            </a>
+            </span>
           </Fragment>
         );
       },
@@ -109,15 +138,16 @@ export default function Film(props) {
         Thêm phim
       </Button>
       <Search
+        onSearch={onSearch}
         className="mb-3"
-        placeholder="input search text"
+        placeholder="Nhập thông tin tên phim"
         enterButton={<SearchOutlined />}
         size="large"
         // suffix={suffix}
-        onSearch={onSearch}
       />
 
       <Table
+        rowKey={"maPhim"}
         columns={columns}
         dataSource={data}
         onChange={onChange}

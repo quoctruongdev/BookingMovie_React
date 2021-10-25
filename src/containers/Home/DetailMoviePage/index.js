@@ -17,7 +17,7 @@ class DetailMoviePage extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { loading, dataTongHop, dataCumRap } = this.props;
     if (loading) return <Loader />;
 

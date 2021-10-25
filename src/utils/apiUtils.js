@@ -27,6 +27,8 @@ api.interceptors.request.use(
 const apiFront = axios.create({
   baseURL: "https://movienew.cybersoft.edu.vn/api/",
 });
+
+
 apiFront.interceptors.request.use(
   (config) => {
     config.headers = {

@@ -5,6 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { SearchOutlined } from "@ant-design/icons";
 import { actFetchListUser } from "./modules/actions";
+import { NavLink } from "react-router-dom";
 
 export default function User(props) {
   const { Search } = Input;
@@ -12,7 +13,6 @@ export default function User(props) {
 
   const data = useSelector((state) => state.listUserReducer.data);
 
-  console.log(data);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -55,15 +55,20 @@ export default function User(props) {
     {
       title: "Hành động",
       dataIndex: "hanhDong",
+
       render: (text, item) => {
         return (
           <Fragment>
-            <a className=" p-2 " href="/">
+            <NavLink
+              key="1"
+              className=" p-2 "
+              to={`/dashboard/edituser/${data.taiKhoan}`}
+            >
               <EditIcon color="secondary" />
-            </a>
-            <a href="/">
+            </NavLink>
+            <NavLink key="2" to="/dashboard/deleteuser">
               <DeleteIcon color="error" />
-            </a>
+            </NavLink>
           </Fragment>
         );
       },

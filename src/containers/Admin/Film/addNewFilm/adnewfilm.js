@@ -1,32 +1,20 @@
-// import React from "react";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-} from "antd";
+import { useFormik } from "formik";
+import { Form, Input, Radio, DatePicker, InputNumber, Switch } from "antd";
 import { actAddMovie } from "./modules/actions";
+import Loader from "./../../../../components/Loader/";
 
-export default function AdNewFilm() {
-  const [componentSize, setComponentSize] = useState("default");
+export default function AdNewFilm(props) {
+  const error = useSelector((state) => state.addMovieReducer.error);
+  const data = useSelector((state) => state.addMovieReducer.data);
+  const loading = useSelector((state) => state.addMovieReducer.loading);
   const dispatch = useDispatch();
-
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
-  };
   const [imgstate, setimgState] = useState("");
 
-  const [state, setState] = useState(
-    {
+  const formik = useFormik({
+    initialValues: {
       tenPhim: "",
       trailer: "",
       moTa: "",
@@ -34,90 +22,77 @@ export default function AdNewFilm() {
       dangChieu: false,
       sapChieu: false,
       hot: false,
-      danhGia: "",
+      danhGia: 0,
       hinhAnh: {},
-      maNhom: "GP10",
-    }
-    // {
-    //   onSubmit: (value) => {
-    //     console.log("value", value);
-    //   },
-    // }
-  );
+      maNhom: "GP11",
+    },
+    onSubmit: (values) => {
+      console.log("value", values);
+      let formData = new FormData();
+      for (let key in values) {
+        if (key !== "hinhAnh") {
+          formData.append(key, values[key]);
+        } else {
+          formData.append("File", values.hinhAnh, values.hinhAnh.name);
+        }
+      }
+      dispatch(actAddMovie(formData));
+    },
+  });
 
-  const handleOnchange = (e) => {
-    const { name, value } = e.target;
-    console.log("Value", value);
-    setState({
-      ...state,
-      [name]: value,
-    });
-  };
   const handlechangeDatePicker = (value) => {
-    let ngayKhoiChieu = moment(value).format("DD/MM/YY");
-    setState({
-      ...state,
-      ngayKhoiChieu,
-    });
+    let ngayKhoiChieu = moment(value).format("DD/MM/YYYY");
+    formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
   };
 
-  const handleChangeReview = (value) => {
-    setState({
-      ...state,
-      danhGia: value,
-    });
+  const handleChangSwitch = (name) => {
+    return (value) => {
+      formik.setFieldValue(name, value);
+    };
   };
-  const handleChangeDangChieu = () => {
-    setState({
-      ...state,
-      dangChieu: true,
-    });
+  const handleChangReview = (name) => {
+    return (value) => {
+      formik.setFieldValue(name, value);
+    };
   };
-  const handleChangeSapChieu = () => {
-    setState({
-      ...state,
-      sapChieu: true,
-    });
-  };
-  const handleChangeHot = () => {
-    setState({
-      ...state,
-      hot: true,
-    });
-  };
-
   const handleOnchangeFile = (e) => {
     let file = e.target.files[0];
-
-    if (
-      file.type === "image/png" ||
-      file.type === "image/jpeg" ||
-      file.type === "image/gif"
-    ) {
-      // console.log("object", file);
+    if (file) {
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
         setimgState(e.target.result);
       };
+      formik.setFieldValue("hinhAnh", file);
     }
-    setState({
-      ...state,
-      hinhAnh: file,
-    });
+  };
+  if (loading) return <Loader />;
+  const renderNotice = () => {
+    if (!error && data) {
+      return (
+        <div className="alert alert-success">
+          Bạn đã thêm phim mới thành công
+        </div>
+      );
+    }
+    return (
+      error && (
+        <div className="alert alert-danger">
+          {error?.response?.data?.content}
+        </div>
+      )
+    );
   };
 
-  const handleMovie = (e) => {
-    // e.preventDefault();
-    dispatch(actAddMovie(state));
-  };
-
-  console.log("object", state);
+  // const handleMovie = (e, formData) => {
+  //   e.preventDefault();
+  //   dispatch(actAddMovie(formData));
+  // };
 
   return (
     <>
       <Form
-        onSubmitCapture={handleMovie}
+        onSubmitCapture={formik.handleSubmit}
         labelCol={{
           span: 4,
         }}
@@ -125,13 +100,9 @@ export default function AdNewFilm() {
           span: 14,
         }}
         layout="horizontal"
-        initialValues={{
-          size: componentSize,
-        }}
-        onValuesChange={onFormLayoutChange}
-        size={componentSize}
       >
         <h3>Thêm phim mới</h3>
+        {renderNotice()}
         <Form.Item label="Kích thước" name="size">
           <Radio.Group>
             <Radio.Button value="small">Nhỏ</Radio.Button>
@@ -140,43 +111,46 @@ export default function AdNewFilm() {
           </Radio.Group>
         </Form.Item>
         <Form.Item label="Tên phim">
-          <Input name="tenPhim" onChange={handleOnchange} />
+          <Input name="tenPhim" onChange={formik.handleChange} />
         </Form.Item>
         <Form.Item label="Trailer">
-          <Input name="trailer" onChange={handleOnchange} />
+          <Input name="trailer" onChange={formik.handleChange} />
         </Form.Item>
         <Form.Item label="Mô tả">
-          <Input name="moTa" onChange={handleOnchange} />
+          <Input name="moTa" onChange={formik.handleChange} />
         </Form.Item>
         <Form.Item label="Ngày khởi chiếu">
-          <DatePicker format="DD/MM/YY" onChange={handlechangeDatePicker} />
+          <DatePicker format="DD/MM/YYYY" onChange={handlechangeDatePicker} />
         </Form.Item>
         <Form.Item label="Đang chiếu" valuePropName="checked">
-          <Switch onChange={handleChangeDangChieu} />
+          <Switch onChange={handleChangSwitch("dangChieu")} />
         </Form.Item>
         <Form.Item label="Sắp chiếu" valuePropName="checked">
-          <Switch onChange={handleChangeSapChieu} />
+          <Switch onChange={handleChangSwitch("sapChieu")} />
         </Form.Item>
         <Form.Item label="Hot" valuePropName="checked">
-          <Switch onChange={handleChangeHot} />
+          <Switch onChange={handleChangSwitch("hot")} />
         </Form.Item>
         <Form.Item label="Đánh giá (sao)">
-          <InputNumber min={1} max={10} onChange={handleChangeReview} />
+          <InputNumber
+            min={1}
+            max={10}
+            onChange={handleChangReview("danhGia")}
+          />
         </Form.Item>
         <Form.Item label="Hình ảnh">
-          <input type="file" onChange={handleOnchangeFile} />
-          <br />
-          <img
-            src={imgstate}
-            style={{ width: 150, height: 150 }}
-            alt="..."
-            accept={" image/png, image/jpeg, image/jpg, image/gif "}
+          <input
+            type="file"
+            onChange={handleOnchangeFile}
+            accept=" image/png, image/jpeg, image/jpg, image/gif "
           />
+          <br />
+          <img src={imgstate} style={{ width: 150, height: 150 }} alt="..." />
         </Form.Item>
 
         <Form.Item>
           <button
-            className=" bg-indigo-800 p-2 text-white ml-48  "
+            className=" bg-indigo-800 p-2 rounded text-white ml-48  "
             type="submit"
           >
             Thêm phim

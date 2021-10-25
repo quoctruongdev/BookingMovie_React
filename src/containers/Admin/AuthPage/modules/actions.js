@@ -79,7 +79,7 @@ export const actTryLogin = (history) => {
       dispatch(actLogout(history));
       return;
     }
-    console.log(exp - date);
+    // console.log(exp - date);
     dispatch(actSetTimeLogout(history, exp - date));
     dispatch(actAuthSuccess(user));
   };

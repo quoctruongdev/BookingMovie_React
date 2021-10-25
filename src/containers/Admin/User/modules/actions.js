@@ -1,11 +1,12 @@
 import * as ActionType from "./constants";
-import { api } from "./../../../../utils/apiUtils";
+import { api } from "../../../../utils/apiUtils";
 
 export const actFetchListUser = () => {
   return (dispatch) => {
     dispatch(actListUserRequest());
+
     api
-      .get(`QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP10`)
+      .get("QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP11")
       .then((result) => {
         dispatch(actListUserSuccess(result.data.content));
       })
