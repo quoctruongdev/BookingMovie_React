@@ -12,8 +12,6 @@ class MyPage extends Component {
     this.props.fetchUserInfo();
   }
 
-
-
   renderHistory = () => {
     const { dataHistory } = this.props;
     return dataHistory?.thongTinDatVe?.map((item) => {
@@ -27,7 +25,10 @@ class MyPage extends Component {
       return (
         <div
           className="container-fluid mypage"
-          style={{ backgroundImage: "url(/asset/img/mypage-bg.jpg)" }}
+          style={{
+            backgroundImage: "url(/asset/img/mypage-bg.png)",
+            backgroundColor: "transparent",
+          }}
         >
           <div>
             <div className="my-5">
@@ -95,7 +96,6 @@ const mapDispatchToProps = (dispatch) => {
     fetchUserInfo: () => {
       dispatch(actFetchUserInfo());
     },
-    
   };
 };
 

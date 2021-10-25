@@ -254,7 +254,7 @@ class SignUpPage extends Component {
         >
           Đăng ký
         </button>
-        <Link to="/login" type="button" className="login-form-btn">
+        <Link to="/login" className="login-form-btn">
           Bạn đã có tài khoản?
         </Link>
       </form>

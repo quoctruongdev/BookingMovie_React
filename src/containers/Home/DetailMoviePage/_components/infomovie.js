@@ -30,7 +30,7 @@ export default class InfoMovie extends Component {
           <span> • </span>
           <span>{new Date(dataPhim?.ngayKhoiChieu).toLocaleDateString()}</span>
         </div>
-        <Link to="/login" type="button" class=" btn btn-danger mt-4" id="mybtn-1">
+        <Link to="/login" class=" btn btn-danger mt-4" id="mybtn-1">
           Mua vé
         </Link>
       </div>

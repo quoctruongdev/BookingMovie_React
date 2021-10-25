@@ -65,6 +65,7 @@ export default class Carousel extends Component {
                           className="close"
                           data-dismiss="modal"
                           aria-label="Close"
+                          style={{ position: "absolute", top: "0", right: "0" }}
                           onClick={() => this.setState({ isOpen: false })}
                         >
                           <span aria-hidden="true">×</span>

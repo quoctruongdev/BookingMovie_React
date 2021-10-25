@@ -149,7 +149,7 @@ class LoginPage extends Component {
         >
           Đăng nhập
         </button>
-        <Link to="/signup" type="button" className="login-form-btn">
+        <Link to="/signup" className="login-form-btn">
           Tạo tài khoản
         </Link>
       </form>
