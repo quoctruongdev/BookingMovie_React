@@ -14,6 +14,7 @@ function App(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actTryLogin(props.history));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

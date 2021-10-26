@@ -62,7 +62,7 @@ class MyPage extends Component {
                   <div
                     role="tabpanel"
                     className="tab-pane fade in active show"
-                    id="Section1"
+                    id="Section1" 
                   >
                     <h5>Thông tin tài khoản</h5>
                     <UserInfo userInfo={this.props.dataHistory} />

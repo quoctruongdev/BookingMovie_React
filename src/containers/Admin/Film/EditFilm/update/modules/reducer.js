@@ -20,7 +20,7 @@ const updateMovieReducer = (state = initialStatae, action) => {
       state.error = null;
       return { ...state };
 
-    case ActionType.UPDATE_MOVIE_SUCCESS:
+    case ActionType.UPDATE_MOVIE_FAILED:
       state.loading = false;
       state.data = null;
       state.error = action.payload;

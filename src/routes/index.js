@@ -60,32 +60,6 @@ const routesAdmin = [
     path: "/dashboard",
     component: lazy(() => import("../containers/Admin/Dashboard")),
   },
-
-  // {
-  //   eaxct: false,
-  //   path: "/dashboard/editfilm/:id",
-  //   component: lazy(() => import("../containers/Admin/Film/EditFilm/EditFilm")),
-  // },
-  // {
-  //   eaxct: false,
-  //   path: "/dashboard/film",
-  //   component: lazy(() => import("../containers/Admin/Film/film")),
-  // },
-  // {
-  //   eaxct: false,
-  //   path: "/dashboard/user",
-  //   component: lazy(() => import("../containers/Admin/User")),
-  // },
-  // {
-  //   eaxct: false,
-  //   path: "/dashboard/adduser",
-  //   component: lazy(() => import("../containers/Admin/User/AddUser")),
-  // },
-  // {
-  //   eaxct: false,
-  //   path: "/dashboard/show",
-  //   component: lazy(() => import("../containers/Admin/Showtime")),
-  // },
 ];
 
 function renderRouteHome() {

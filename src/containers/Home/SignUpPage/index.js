@@ -36,7 +36,6 @@ class SignUpPage extends Component {
     };
   }
 
-
   componentWillUnmount() {
     this.props.reset();
   }
@@ -72,7 +71,7 @@ class SignUpPage extends Component {
         emailSignUpValid = mess === "" ? true : false;
         if (
           value &&
-          !value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+          !value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) // eslint-disable-line
         ) {
           mess = "Email không hợp lệ";
           emailSignUpValid = false;

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
 import { actFetchCumRap, actFetchCumRap2 } from "../modules/actions";
 import Loader from "../../../../components/Loader";
 import { connect } from "react-redux";
@@ -157,20 +156,20 @@ class Tab extends Component {
     return (
       <div className="container">
         <div id="tab">
-        {/* Tab header: Hệ thống rạp */}
-        <ul
-          className="nav nav-pills mb-3 tab-header"
-          id="pills-tab"
-          role="tablist"
-        >
-          {this.renderTabTitle(this.props.dataHTRap)}
-        </ul>
-        {/* Tab content: Danh sách cụm rạp và lịch chiếu */}
-        <div className="tab-content mb-5" id="pills-tabContent">
-          {/* 1 hệ thống rạp */}
-          {this.renderHTRap(this.props.dataHTCumRap)}
+          {/* Tab header: Hệ thống rạp */}
+          <ul
+            className="nav nav-pills mb-3 tab-header"
+            id="pills-tab"
+            role="tablist"
+          >
+            {this.renderTabTitle(this.props.dataHTRap)}
+          </ul>
+          {/* Tab content: Danh sách cụm rạp và lịch chiếu */}
+          <div className="tab-content mb-5" id="pills-tabContent">
+            {/* 1 hệ thống rạp */}
+            {this.renderHTRap(this.props.dataHTCumRap)}
+          </div>
         </div>
-      </div>
       </div>
     );
   }

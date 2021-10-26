@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import HomeCarousel from "../_component/Carousel";
 import ListMoviePage from "../ListMoviePage";
 import { connect } from "react-redux";
-import { actFetchHeThongRap, actFetchCumRap } from "./modules/actions";
+import { actFetchHeThongRap } from "./modules/actions";
 import Loader from "./../../../components/Loader";
 import Tab from "./_components/tab";
-import { ConfigProvider } from "antd";
 import "./style.css";
 
 class HomePage extends Component {
@@ -20,7 +19,7 @@ class HomePage extends Component {
       <div className="ani">
         <HomeCarousel />
         <ListMoviePage />
-        <Tab dataHTRap={dataHTRap}/>
+        <Tab key="3" dataHTRap={dataHTRap} />
       </div>
     );
   }

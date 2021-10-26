@@ -1,4 +1,3 @@
-import { concat } from "lodash";
 import React, { Component } from "react";
 import "./style.css";
 import { actFetchLogin, actLoginReset } from "./modules/actions";
@@ -25,7 +24,7 @@ class LoginPage extends Component {
       formLoginValid: false,
     };
   }
-  
+
   componentWillUnmount() {
     this.props.actLoginReset();
   }
@@ -177,7 +176,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     actLoginReset: () => {
       dispatch(actLoginReset());
-    }
+    },
   };
 };
 

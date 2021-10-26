@@ -18,6 +18,7 @@ export default function EditFilm(props) {
   useEffect(() => {
     const id = props.match.params.id;
     dispatch(actFetchEditMovie(id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const formik = useFormik({
@@ -86,13 +87,13 @@ export default function EditFilm(props) {
 
   if (loading) return <Loader />;
   const renderNotice = () => {
-    return (
-      error && (
+    if (error && data2) {
+      return (
         <div className="alert alert-danger">
-          {error?.response?.data?.content}
+          {error?.response?.data2?.content}
         </div>
-      )
-    );
+      );
+    }
   };
 
   return (

@@ -40,6 +40,7 @@ export default class Carousel extends Component {
                   data-src={dataPhim?.trailer}
                   data-target="#myModal"
                   onClick={this.openModal}
+                  href="/#"
                 >
                   <img
                     className="playBtn"

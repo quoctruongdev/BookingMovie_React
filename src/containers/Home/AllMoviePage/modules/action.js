@@ -1,5 +1,4 @@
 import * as ActionType from "./constants";
-import axios from "axios";
 import { apiFront } from "../../../../utils/apiUtils";
 
 export const actFetchAllMovie = () => {

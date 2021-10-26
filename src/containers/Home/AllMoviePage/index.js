@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Movie from "./movie";
 import Loader from "../../../components/Loader";
 import { actFetchAllMovie } from "./modules/action";

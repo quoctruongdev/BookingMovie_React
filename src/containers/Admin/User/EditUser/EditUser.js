@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Select } from "antd";
 // import { actAddUser } from "./modules/actions";
-import Loader from "./../../../../components/Loader/";
+// import Loader from "./../../../../components/Loader/";
 
 export default function EditUser() {
-  const data = useSelector((state) => state.addUserReducer.data);
-  const loading = useSelector((state) => state.addUserReducer.loading);
-  const error = useSelector((state) => state.addUserReducer.error);
-  const dispatch = useDispatch();
+  // const data = useSelector((state) => state.addUserReducer.data);
+  // const loading = useSelector((state) => state.addUserReducer.loading);
+  // const error = useSelector((state) => state.addUserReducer.error);
+  // const dispatch = useDispatch();
 
   const [state, setState] = useState({
     taiKhoan: "",

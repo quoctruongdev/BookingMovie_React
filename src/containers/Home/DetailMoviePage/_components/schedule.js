@@ -4,7 +4,7 @@ import Tab from "./tab";
 import InfoMovie from "./infomovie";
 
 export default function Schedule(props) {
-  const {  dataTongHop } = props;
+  const { dataTongHop } = props;
   return (
     <div className="container schedule">
       {/* info movie */}
@@ -30,7 +30,7 @@ export default function Schedule(props) {
       <div>
         <h4>Lịch chiếu</h4>
         <DaySlider />
-        <Tab dataTongHop={dataTongHop} />
+        <Tab key="3" dataTongHop={dataTongHop} />
       </div>
     </div>
   );

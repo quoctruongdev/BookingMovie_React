@@ -23,13 +23,15 @@ export default function HomeCarousel() {
 
   useEffect(() => {
     dispatch(actAddCarousel());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderCarousel = () => {
     return data?.map((item) => {
       return (
         <div key={item.maBanner} className="myCarousel">
-          <div className="myBanner"
+          <div
+            className="myBanner"
             style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}
           ></div>
         </div>

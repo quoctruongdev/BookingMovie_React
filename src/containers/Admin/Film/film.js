@@ -25,6 +25,7 @@ export default function Film(props) {
 
   useEffect(() => {
     dispatch(actFetchListMovie(props.history));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const columns = [
@@ -50,7 +51,9 @@ export default function Film(props) {
         return (
           <Fragment>
             <img
+              key="index"
               className="ml-2"
+              alt=""
               src={item.hinhAnh}
               style={{ width: 50, height: 50 }}
               onError={(e) => {

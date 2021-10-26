@@ -29,7 +29,7 @@ class SeatRow extends Component {
         let indexGheDangDat = this.props.dsGheDangDat.findIndex(
           (item) => seat.maGhe === item.ghe.maGhe
         );
-        if (indexGheDangDat != -1) {
+        if (indexGheDangDat !== -1) {
           //nếu là ghế đang chọn
           cssSeat = "gheDangChon";
         }

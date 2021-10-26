@@ -41,7 +41,6 @@ class UserInfo extends Component {
   };
 
   checkMatKhau = () => {
-    
     const { matKhau } = this.state.values;
     let mess = matKhau.trim() === "" ? "Vui lòng nhập thông tin" : "";
     let matKhauValid = mess === "" ? true : false;
@@ -49,7 +48,7 @@ class UserInfo extends Component {
       mess = "Mật khẩu không hợp lệ";
       matKhauValid = false;
     }
-    
+
     this.setState({
       errorsInput: { ...this.state.errorsInput, matKhau: mess },
       matKhauValid,
@@ -62,12 +61,12 @@ class UserInfo extends Component {
     let emailValid = mess === "" ? true : false;
     if (
       email &&
-      !email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+      !email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) // eslint-disable-line
     ) {
       mess = "Email không hợp lệ";
       emailValid = false;
     }
-    
+
     this.setState({
       errorsInput: { ...this.state.errorsInput, email: mess },
       emailValid,
@@ -82,7 +81,7 @@ class UserInfo extends Component {
       mess = "Số điện thoại không hợp lệ";
       phoneValid = false;
     }
-    
+
     this.setState({
       errorsInput: { ...this.state.errorsInput, phone: mess },
       phoneValid,
@@ -97,7 +96,7 @@ class UserInfo extends Component {
       mess = "Họ tên không hợp lệ";
       hoTenValid = false;
     }
-    
+
     this.setState({
       errorsInput: { ...this.state.errorsInput, hoTen: mess },
       hoTenValid,

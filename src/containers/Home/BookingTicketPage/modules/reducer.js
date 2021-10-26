@@ -16,7 +16,7 @@ const bookingTicketReducer = (state = initState, action) => {
       let index = dsGheDangDat.findIndex(
         (item) => item.ghe.maGhe === action.payload.ghe.maGhe
       );
-      if (index != -1) {
+      if (index !== -1) {
         // ghế đang được chọn
         dsGheDangDat.splice(index, 1);
       } else {
@@ -30,8 +30,10 @@ const bookingTicketReducer = (state = initState, action) => {
 
     case ActionType.DELETE_GHE: {
       let dsGheDangDat = [...state.dsGheDangDat];
-      let index = dsGheDangDat.findIndex((item) => item.ghe.maGhe === action.payload);
-      if (index != -1) {
+      let index = dsGheDangDat.findIndex(
+        (item) => item.ghe.maGhe === action.payload
+      );
+      if (index !== -1) {
         // ghế đang được chọn
         dsGheDangDat.splice(index, 1);
       }

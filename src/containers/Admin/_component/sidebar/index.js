@@ -51,6 +51,7 @@ export default function SideBar(props) {
               <img
                 src="/asset/img/logo1.png"
                 style={{ height: 40, width: 40 }}
+                alt=""
               />
             </a>
           </div>
@@ -65,7 +66,7 @@ export default function SideBar(props) {
               <Menu.Item key="2" icon={<PeopleIcon />}>
                 <NavLink to="/dashboard/user">List User</NavLink>
               </Menu.Item>
-              <Menu.Item accessKey="3" key="3" icon={<PersonAddIcon />}>
+              <Menu.Item key="3" icon={<PersonAddIcon />}>
                 <NavLink activeClassName="active" to="/dashboard/adduser">
                   Add User
                 </NavLink>
@@ -102,9 +103,9 @@ export default function SideBar(props) {
                 <div className="flex flex-col items-center pr-10 justify-center">
                   <div className="flex -space-x-4">
                     <img
-                      alt
                       className="w-12 h-12 border rounded-full dark:bg-coolGray-500 dark:border-coolGray-700"
                       src="https://source.unsplash.com/41x41/?portrait"
+                      alt=""
                     />
                     <span className="flex items-center justify-center w-5 h-5 font-semibold   text-xs border rounded-full bg-red-700  text-white  border-gray-700  ">
                       {Math.floor(Math.random() * (100 - 0) - 0)}

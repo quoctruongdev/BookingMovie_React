@@ -17,6 +17,7 @@ export default function User(props) {
 
   useEffect(() => {
     dispatch(actFetchListUser());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const columns = [
