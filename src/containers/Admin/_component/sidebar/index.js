@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Button } from "antd";
 import React from "react";
 import "./style.css";
 import { useState } from "react";
@@ -11,11 +11,11 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PeopleIcon from "@mui/icons-material/People";
 
 import {
+  PoweroffOutlined,
   EditFilled,
   PieChartOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
 } from "@ant-design/icons";
+
 import { NavLink, BrowserRouter, Route } from "react-router-dom";
 import User from "../../User";
 import Film from "../../Film/film";
@@ -38,6 +38,7 @@ export default function SideBar(props) {
     setState({ collapsed });
   };
   const { collapsed } = state;
+
   return (
     <BrowserRouter>
       <Layout style={{ minHeight: "100vh" }}>
@@ -88,35 +89,28 @@ export default function SideBar(props) {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
+          <Header
+            className="site-layout-background pt-2  bg-pink-800  "
+            style={{ padding: 0 }}
+          >
             <div className="flex justify-between">
-              <div>
-                {React.createElement(
-                  state ? MenuUnfoldOutlined : MenuFoldOutlined,
-                  {
-                    className: "trigger",
-                    onClick: () => {
-                      state ? setState(false) : setState(true);
-                    },
-                  }
-                )}
-              </div>
-              <div className="flex items-center">
-                <div className="text-gray-500 hover:text-blue-700 flex items-center">
-                  <i className="fas fa-user-tie pr-2 text-xl"></i>
-                  <button className="leading-9 pr-4">
-                    {/* {valueUser?.hoTen} */}
-                  </button>
+              <div></div>
+              <div className="flex  mx-6 ">
+                <div className="flex flex-col items-center pr-10 justify-center">
+                  <div className="flex -space-x-4">
+                    <img
+                      alt
+                      className="w-12 h-12 border rounded-full dark:bg-coolGray-500 dark:border-coolGray-700"
+                      src="https://source.unsplash.com/41x41/?portrait"
+                    />
+                    <span className="flex items-center justify-center w-5 h-5 font-semibold border rounded-full bg-red-700  text-white  dark:border-coolGray-700">
+                      +3
+                    </span>
+                  </div>
                 </div>
 
-                <div
-                  // onClick={() => {
-                  //   logOutUserAdmintemplate();
-                  // }}
-                  className="cursor-pointer text-red-500 hover:text-red-700 flex items-center"
-                >
-                  <i className="fas fa-sign-out-alt text-xl pr-2 "></i>
-                  <button className="mr-10">Đăng xuất</button>
+                <div className="cursor-pointer text-red-500 hover:text-red-700 flex items-center">
+                  <Button type="primary" icon={<PoweroffOutlined />}></Button>
                 </div>
               </div>
             </div>

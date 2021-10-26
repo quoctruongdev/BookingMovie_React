@@ -88,6 +88,7 @@ export default function AdNewFilm(props) {
   //   e.preventDefault();
   //   dispatch(actAddMovie(formData));
   // };
+  if (loading) return <Loader />;
 
   return (
     <>

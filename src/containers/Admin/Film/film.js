@@ -10,7 +10,6 @@ import {
 } from "../../Home/ListMoviePage/modules/actions";
 import { NavLink } from "react-router-dom";
 import { actFetchDeleteMovie } from "./EditFilm/deleteFilm/actions";
-
 export default function Film(props) {
   const { Search } = Input;
   const onSearch = (value) => {
@@ -79,9 +78,7 @@ export default function Film(props) {
           </Fragment>
         );
       },
-      //   sorter: (a, b) => a.tenPhim.length - b.tenPhim.length,
       sortDrections: ["descen"],
-      // width: "40%",
     },
     {
       title: "Hành động",
@@ -96,7 +93,6 @@ export default function Film(props) {
             >
               <EditIcon color="secondary" />
             </NavLink>
-
             <span
               style={{ cursor: "pointer" }}
               key="2"
@@ -115,12 +111,10 @@ export default function Film(props) {
           </Fragment>
         );
       },
-      //   color=" secondary "
-      //   sorter: (a, b) => a.hanhDong.length - b.hanhDong.length,
+
       width: "10%",
     },
   ];
-  //   const data2 = data;
 
   function onChange(pagination, filters, sorter, extra) {
     console.log("params", pagination, filters, sorter, extra);
@@ -130,7 +124,8 @@ export default function Film(props) {
     <div className="container text text-4xl  ">
       <h3>Quản lý phim</h3>
       <Button
-        className="mb-2"
+        type="primary"
+        className="mb-2 rounded  "
         onClick={() => {
           props.history.push("/dashboard/addnewfilm");
         }}

@@ -85,7 +85,8 @@ export default function User(props) {
     <div className="container text text-4xl  ">
       <h3>Quản lý người dùng</h3>
       <Button
-        className="mb-3"
+        type="primary"
+        className="mb-2 rounded  "
         onClick={() => {
           props.history.push("/dashboard/adduser");
         }}
