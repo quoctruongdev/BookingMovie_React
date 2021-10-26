@@ -84,10 +84,6 @@ export default function AdNewFilm(props) {
     );
   };
 
-  // const handleMovie = (e, formData) => {
-  //   e.preventDefault();
-  //   dispatch(actAddMovie(formData));
-  // };
   if (loading) return <Loader />;
 
   return (

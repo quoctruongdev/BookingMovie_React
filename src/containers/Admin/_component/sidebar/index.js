@@ -10,12 +10,7 @@ import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PeopleIcon from "@mui/icons-material/People";
 
-import {
-  PoweroffOutlined,
-  EditFilled,
-  PieChartOutlined,
-} from "@ant-design/icons";
-
+import { PoweroffOutlined, EditFilled } from "@ant-design/icons";
 import { NavLink, BrowserRouter, Route } from "react-router-dom";
 import User from "../../User";
 import Film from "../../Film/film";
@@ -25,7 +20,7 @@ import AdNewFilm from "../../Film/addNewFilm/adnewfilm";
 import AddUser from "../../User/AddUser";
 import EditUser from "../../User/EditUser/EditUser";
 import EditFilm from "../../Film/EditFilm/EditFilm";
-
+import { Redirect } from "react-router";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -33,6 +28,14 @@ export default function SideBar(props) {
   const [state, setState] = useState({
     collapsed: false,
   });
+
+  const logOutUserAdmin = () => {
+    // clear localStorage
+    localStorage.removeItem("UserAdmin");
+    localStorage.removeItem("exp");
+    window.location.reload();
+    <Redirect to="/auth" />;
+  };
 
   const onCollapse = (collapsed) => {
     setState({ collapsed });
@@ -52,11 +55,11 @@ export default function SideBar(props) {
             </a>
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={props.path}>
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
+            {/* <Menu.Item key="1" icon={<PieChartOutlined />}>
               <NavLink exact to="/dashboard">
                 Dashboard
               </NavLink>
-            </Menu.Item>
+            </Menu.Item> */}
 
             <SubMenu key="sub1" icon={<AccountCircleIcon />} title="User">
               <Menu.Item key="2" icon={<PeopleIcon />}>
@@ -68,7 +71,7 @@ export default function SideBar(props) {
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="4" icon={<EditFilled />}>
-                <NavLink to="/dashboard/edituser:id">Edit User</NavLink>
+                <NavLink to="/dashboard/edituser/:id">Edit User</NavLink>
               </Menu.Item>
             </SubMenu>
 
@@ -103,14 +106,20 @@ export default function SideBar(props) {
                       className="w-12 h-12 border rounded-full dark:bg-coolGray-500 dark:border-coolGray-700"
                       src="https://source.unsplash.com/41x41/?portrait"
                     />
-                    <span className="flex items-center justify-center w-5 h-5 font-semibold border rounded-full bg-red-700  text-white  dark:border-coolGray-700">
-                      +3
+                    <span className="flex items-center justify-center w-5 h-5 font-semibold   text-xs border rounded-full bg-red-700  text-white  border-gray-700  ">
+                      {Math.floor(Math.random() * (100 - 0) - 0)}
                     </span>
                   </div>
                 </div>
 
                 <div className="cursor-pointer text-red-500 hover:text-red-700 flex items-center">
-                  <Button type="primary" icon={<PoweroffOutlined />}></Button>
+                  <Button
+                    type="primary"
+                    onClick={() => {
+                      logOutUserAdmin();
+                    }}
+                    icon={<PoweroffOutlined />}
+                  ></Button>
                 </div>
               </div>
             </div>
@@ -126,7 +135,7 @@ export default function SideBar(props) {
             <Route exact path="/dashboard" component={DashboardPage} />
             <Route path="/dashboard/user" component={User} />
             <Route path="/dashboard/adduser" component={AddUser} />
-            <Route path="/dashboard/edituser:id" component={EditUser} />
+            <Route path="/dashboard/edituser/:id" component={EditUser} />
             <Route path="/dashboard/film" component={Film} />
             <Route path="/dashboard/addnewfilm" component={AdNewFilm} />
             <Route path="/dashboard/editfilm/:id" component={EditFilm} />

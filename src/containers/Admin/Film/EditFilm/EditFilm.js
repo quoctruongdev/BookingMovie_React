@@ -86,18 +86,13 @@ export default function EditFilm(props) {
 
   if (loading) return <Loader />;
   const renderNotice = () => {
-    if (!error && data2) {
-      return (
-        <div className="alert alert-success">Bạn đã cập nhật thành công</div>
-      );
-    }
-    // return (
-    //   error && (
-    //     <div className="alert alert-danger">
-    //       {error?.response?.data2?.content}
-    //     </div>
-    //   )
-    // );
+    return (
+      error && (
+        <div className="alert alert-danger">
+          {error?.response?.data?.content}
+        </div>
+      )
+    );
   };
 
   return (

@@ -32,7 +32,7 @@ export const actAuthApi = (user, history) => {
         localStorage.setItem("UserAdmin", JSON.stringify(result.data.content));
 
         //redirect dashboard
-        history.replace("/dashboard");
+        history.replace("/dashboard/film");
 
         dispatch(actAuthSuccess(result.data.content));
       })

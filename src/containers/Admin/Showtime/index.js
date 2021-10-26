@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function ShowTime() {
-  return <div>ShowTime</div>;
+  return <h3>Comming Soon </h3>;
 }

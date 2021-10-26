@@ -138,7 +138,6 @@ export default function Film(props) {
         placeholder="Nhập thông tin tên phim"
         enterButton={<SearchOutlined />}
         size="large"
-        // suffix={suffix}
       />
 
       <Table
@@ -146,7 +145,6 @@ export default function Film(props) {
         columns={columns}
         dataSource={data}
         onChange={onChange}
-        // className=" align-middle text-center"
       />
     </div>
   );
