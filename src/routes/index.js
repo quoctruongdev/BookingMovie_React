@@ -56,16 +56,16 @@ const routesHome = [
 ];
 const routesAdmin = [
   {
-    eaxct: false,
+    eaxct: true,
     path: "/dashboard",
     component: lazy(() => import("../containers/Admin/Dashboard")),
   },
 
-  {
-    eaxct: false,
-    path: "/dashboard/editfilm/:id",
-    component: lazy(() => import("../containers/Admin/Film/EditFilm/EditFilm")),
-  },
+  // {
+  //   eaxct: false,
+  //   path: "/dashboard/editfilm/:id",
+  //   component: lazy(() => import("../containers/Admin/Film/EditFilm/EditFilm")),
+  // },
   // {
   //   eaxct: false,
   //   path: "/dashboard/film",

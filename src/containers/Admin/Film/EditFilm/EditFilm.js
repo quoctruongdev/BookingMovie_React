@@ -8,7 +8,8 @@ import Loader from "./../../../../components/Loader/";
 import { actFetchUpdateMovie } from "./update/modules/actions";
 
 export default function EditFilm(props) {
-  const error = useSelector((state) => state.editMovieReducer.error);
+  const error = useSelector((state) => state.updateMovieReducer.error);
+  const data2 = useSelector((state) => state.updateMovieReducer.data2);
   const data = useSelector((state) => state.editMovieReducer.data);
   const loading = useSelector((state) => state.editMovieReducer.loading);
   const [imgstate, setimgState] = useState("");
@@ -16,9 +17,7 @@ export default function EditFilm(props) {
 
   useEffect(() => {
     const id = props.match.params.id;
-    return () => {
-      dispatch(actFetchEditMovie(id));
-    };
+    dispatch(actFetchEditMovie(id));
   }, []);
 
   const formik = useFormik({
@@ -84,15 +83,21 @@ export default function EditFilm(props) {
       };
     }
   };
+
   if (loading) return <Loader />;
   const renderNotice = () => {
-    return (
-      error && (
-        <div className="alert alert-danger">
-          {error?.response?.data?.content}
-        </div>
-      )
-    );
+    if (!error && data2) {
+      return (
+        <div className="alert alert-success">Bạn đã cập nhật thành công</div>
+      );
+    }
+    // return (
+    //   error && (
+    //     <div className="alert alert-danger">
+    //       {error?.response?.data2?.content}
+    //     </div>
+    //   )
+    // );
   };
 
   return (
