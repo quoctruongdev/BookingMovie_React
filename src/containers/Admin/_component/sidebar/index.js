@@ -56,12 +56,6 @@ export default function SideBar(props) {
             </a>
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={props.path}>
-            {/* <Menu.Item key="1" icon={<PieChartOutlined />}>
-              <NavLink exact to="/dashboard">
-                Dashboard
-              </NavLink>
-            </Menu.Item> */}
-
             <SubMenu key="sub1" icon={<AccountCircleIcon />} title="User">
               <Menu.Item key="2" icon={<PeopleIcon />}>
                 <NavLink to="/dashboard/user">List User</NavLink>
@@ -71,9 +65,6 @@ export default function SideBar(props) {
                   Add User
                 </NavLink>
               </Menu.Item>
-              <Menu.Item key="4" icon={<EditFilled />}>
-                <NavLink to="/dashboard/edituser/:id">Edit User</NavLink>
-              </Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub2" icon={<LocalMoviesIcon />} title="Film">
@@ -82,9 +73,6 @@ export default function SideBar(props) {
               </Menu.Item>
               <Menu.Item key="6" icon={<MovieFilterIcon />}>
                 <NavLink to="/dashboard/addnewfilm">Add New Film</NavLink>
-              </Menu.Item>
-              <Menu.Item key="7" icon={<EditFilled />}>
-                <NavLink to="/dashboard/editfilm/:id">Edit Film</NavLink>
               </Menu.Item>
             </SubMenu>
             <Menu.Item key="8" icon={<CalendarViewMonthIcon />}>
@@ -100,7 +88,7 @@ export default function SideBar(props) {
             <div className="flex justify-between">
               <div></div>
               <div className="flex  mx-6 ">
-                <div className="flex flex-col items-center pr-10 justify-center">
+                <div className="flex flex-col items-center mr-2 justify-center">
                   <div className="flex -space-x-4">
                     <img
                       className="w-12 h-12 border rounded-full dark:bg-coolGray-500 dark:border-coolGray-700"
