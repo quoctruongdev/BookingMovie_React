@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Table, Input } from "antd";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { SearchOutlined } from "@ant-design/icons";
 import { actFetchListUser } from "./modules/actions";
 import { NavLink } from "react-router-dom";
+import { actFetchDeleteUser } from "./EditUser/Delete/actions";
 
 export default function User(props) {
   const { Search } = Input;
@@ -63,13 +63,23 @@ export default function User(props) {
             <NavLink
               key="1"
               className=" p-2 "
-              to={`/dashboard/edituser/${data.taiKhoan}`}
+              to={`/dashboard/edituser/${item.taiKhoan}`}
             >
               <EditIcon color="secondary" />
             </NavLink>
-            <NavLink key="2" to="/dashboard/deleteuser">
+            <span
+              style={{ cursor: "pointer" }}
+              key="2"
+              onClick={() => {
+                if (
+                  window.confirm("Bạn có chắc chắn người dùng" + item.hoTen)
+                ) {
+                  dispatch(actFetchDeleteUser(item.taiKhoan));
+                }
+              }}
+            >
               <DeleteIcon color="error" />
-            </NavLink>
+            </span>
           </Fragment>
         );
       },
@@ -87,21 +97,13 @@ export default function User(props) {
       <h3>Quản lý người dùng</h3>
       <Button
         type="primary"
-        className="mb-2 rounded  "
+        className="mb- rounded  "
         onClick={() => {
           props.history.push("/dashboard/adduser");
         }}
       >
         Thêm người dùng
       </Button>
-      <Search
-        className="mb-3"
-        placeholder="input search text"
-        enterButton={<SearchOutlined />}
-        size="large"
-        onSearch={onSearch}
-      />
-
       <Table columns={columns} dataSource={data} onChange={onChange} />
     </div>
   );

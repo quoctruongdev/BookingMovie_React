@@ -10,7 +10,7 @@ import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PeopleIcon from "@mui/icons-material/People";
 
-import { PoweroffOutlined, EditFilled } from "@ant-design/icons";
+import { PoweroffOutlined } from "@ant-design/icons";
 import { NavLink, BrowserRouter, Route } from "react-router-dom";
 import User from "../../User";
 import Film from "../../Film/film";
@@ -30,7 +30,6 @@ export default function SideBar(props) {
   });
 
   const logOutUserAdmin = () => {
-    // clear localStorage
     localStorage.removeItem("UserAdmin");
     localStorage.removeItem("exp");
     window.location.reload();
@@ -45,7 +44,12 @@ export default function SideBar(props) {
   return (
     <BrowserRouter>
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={onCollapse}
+          xs={{ span: 6 }}
+        >
           <div className="logo p-2 flex justify-center ">
             <a href="/#">
               <img
@@ -82,8 +86,8 @@ export default function SideBar(props) {
         </Sider>
         <Layout className="site-layout">
           <Header
-            className="site-layout-background pt-2  bg-pink-800  "
-            style={{ padding: 0 }}
+            className="site-layout-background pt-2   "
+            style={{ padding: 0, backgroundColor: "rgb(51, 53, 69)" }}
           >
             <div className="flex justify-between">
               <div></div>
@@ -91,11 +95,12 @@ export default function SideBar(props) {
                 <div className="flex flex-col items-center mr-2 justify-center">
                   <div className="flex -space-x-4">
                     <img
-                      className="w-12 h-12 border rounded-full dark:bg-coolGray-500 dark:border-coolGray-700"
+                      style={{ borderColor: "rgb(51, 53, 69" }}
+                      className="w-12 h-12  rounded-full "
                       src="https://source.unsplash.com/41x41/?portrait"
                       alt=""
                     />
-                    <span className="flex items-center justify-center w-5 h-5 font-semibold   text-xs border rounded-full bg-red-700  text-white  border-gray-700  ">
+                    <span className="flex items-center justify-center w-5 h-5 font-semibold   text-xs  rounded-full bg-red-500  text-white     ">
                       {Math.floor(Math.random() * (100 - 0) - 0)}
                     </span>
                   </div>

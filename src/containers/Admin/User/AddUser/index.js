@@ -69,7 +69,7 @@ export default function AddUser() {
         }}
         layout="horizontal"
       >
-        <h3 className=" text-center">Thêm người dùng</h3>
+        <h3 className=" container text-center">Thêm người dùng</h3>
         {renderNotice()}
         <Form.Item label="Tài khoản">
           <Input name="taiKhoan" onChange={handleOnchange} />

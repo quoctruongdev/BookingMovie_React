@@ -8,8 +8,9 @@ import Loader from "./../../../../components/Loader/";
 import { actFetchUpdateMovie } from "./update/modules/actions";
 
 export default function EditFilm(props) {
-  const error = useSelector((state) => state.updateMovieReducer.error);
+  const error2 = useSelector((state) => state.updateMovieReducer.error2);
   const data2 = useSelector((state) => state.updateMovieReducer.data2);
+
   const data = useSelector((state) => state.editMovieReducer.data);
   const loading = useSelector((state) => state.editMovieReducer.loading);
   const [imgstate, setimgState] = useState("");
@@ -87,10 +88,10 @@ export default function EditFilm(props) {
 
   if (loading) return <Loader />;
   const renderNotice = () => {
-    if (error && data2) {
+    if (error2 && data2) {
       return (
         <div className="alert alert-danger">
-          {error?.response?.data2?.content}
+          {error2?.response?.data2?.content}
         </div>
       );
     }

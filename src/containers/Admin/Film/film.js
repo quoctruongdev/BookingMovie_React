@@ -32,9 +32,7 @@ export default function Film(props) {
     {
       title: "Mã Phim",
       dataIndex: "maPhim",
-
       sorter: (a, b) => a.maPhim - b.maPhim,
-      // sortDrections: ["descen"],
       width: "10%",
     },
     {
