@@ -97,7 +97,7 @@ export default function User(props) {
       <h3>Quản lý người dùng</h3>
       <Button
         type="primary"
-        className="mb- rounded  "
+        className="mb-4 rounded  "
         onClick={() => {
           props.history.push("/dashboard/adduser");
         }}
