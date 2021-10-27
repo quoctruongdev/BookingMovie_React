@@ -6,6 +6,9 @@ import { Form, Input, DatePicker, InputNumber, Switch } from "antd";
 import { actFetchEditMovie } from "./modules/actions";
 import Loader from "./../../../../components/Loader/";
 import { actFetchUpdateMovie } from "./update/modules/actions";
+import { Typography } from "antd";
+
+const { Title } = Typography;
 
 export default function EditFilm(props) {
   const error2 = useSelector((state) => state.updateMovieReducer.error2);
@@ -109,7 +112,7 @@ export default function EditFilm(props) {
         }}
         layout="horizontal"
       >
-        <h3>Cập nhật phim</h3>
+        <Title level={3}>Thêm phim mới</Title>
         {renderNotice()}
         <Form.Item label="Tên phim">
           <Input

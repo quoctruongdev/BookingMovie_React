@@ -4,7 +4,10 @@ import { Form, Input, Select } from "antd";
 import { actFetchEditUser } from "./_modules/actions";
 import Loader from "./../../../../components/Loader/";
 import { actFetchUpdateUser } from "./Update/actions";
+import { Typography } from "antd";
+
 export default function EditUser(props) {
+  const { Title } = Typography;
   const loading = useSelector((state) => state.editUserReducer.loading);
   const data = useSelector((state) => state.editUserReducer.data);
 
@@ -70,7 +73,10 @@ export default function EditUser(props) {
         }}
         layout="horizontal"
       >
-        <h3 className="text-center">Cập nhật người dùng</h3>
+        <Title className="text-center" level={3}>
+          Cập nhật người dùng
+        </Title>
+
         {renderNotice()}
         <Form.Item label="Tài khoản">
           <Input

@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Select } from "antd";
 import { actFetchAddUser } from "./modules/actions";
 import Loader from "./../../../../components/Loader/";
+import { Typography } from "antd";
 
 export default function AddUser() {
+  const { Title } = Typography;
   const data = useSelector((state) => state.addUserReducer.data);
   const loading = useSelector((state) => state.addUserReducer.loading);
   const error = useSelector((state) => state.addUserReducer.error);
@@ -69,7 +71,9 @@ export default function AddUser() {
         }}
         layout="horizontal"
       >
-        <h3 className=" container text-center">Thêm người dùng</h3>
+        <Title className="text-center" level={3}>
+          Thêm người dùng
+        </Title>
         {renderNotice()}
         <Form.Item label="Tài khoản">
           <Input name="taiKhoan" onChange={handleOnchange} />

@@ -5,8 +5,10 @@ import { useFormik } from "formik";
 import { Form, Input, Radio, DatePicker, InputNumber, Switch } from "antd";
 import { actAddMovie } from "./modules/actions";
 import Loader from "./../../../../components/Loader/";
+import { Typography } from "antd";
 
 export default function AdNewFilm(props) {
+  const { Title } = Typography;
   const error = useSelector((state) => state.addMovieReducer.error);
   const data = useSelector((state) => state.addMovieReducer.data);
   const loading = useSelector((state) => state.addMovieReducer.loading);
@@ -98,8 +100,10 @@ export default function AdNewFilm(props) {
         }}
         layout="horizontal"
       >
-        <h3>Thêm phim mới</h3>
-        {renderNotice()}
+        <div className="text-center">
+          <Title level={3}>Thêm phim mới</Title>
+        </div>
+        <div>{renderNotice()}</div>
         <Form.Item label="Kích thước" name="size">
           <Radio.Group>
             <Radio.Button value="small">Nhỏ</Radio.Button>
@@ -150,7 +154,7 @@ export default function AdNewFilm(props) {
             className=" bg-indigo-800 p-2 rounded text-white ml-48  "
             type="submit"
           >
-            Thêm phim
+            Thêm phim mới
           </button>
         </Form.Item>
       </Form>
