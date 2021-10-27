@@ -1,4 +1,4 @@
-//Link deply bài tập
+//Link deploy bài tập
 https://gp-11-booking-movie.surge.sh/
 
 ---
