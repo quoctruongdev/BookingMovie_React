@@ -132,7 +132,6 @@ export default function MultipleRows() {
             key="1"
           >
             <div>
-              {" "}
               <Slider {...settings}>{renderMovieNow()}</Slider>
             </div>
           </TabPane>

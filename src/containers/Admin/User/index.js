@@ -8,8 +8,8 @@ import { NavLink } from "react-router-dom";
 import { actFetchDeleteUser } from "./EditUser/Delete/actions";
 
 export default function User(props) {
-  const { Search } = Input;
-  const onSearch = (value) => console.log(value);
+  // const { Search } = Input;
+  // const onSearch = (value) => console.log(value);
 
   const data = useSelector((state) => state.listUserReducer.data);
 

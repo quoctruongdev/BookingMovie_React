@@ -65,9 +65,9 @@ export default function SideBar(props) {
                 <NavLink to="/dashboard/user">List User</NavLink>
               </Menu.Item>
               <Menu.Item key="3" icon={<PersonAddIcon />}>
-                <NavLink activeClassName="active" to="/dashboard/adduser">
+                {/* <NavLink activeClassName="active" to="/dashboard/adduser">
                   Add User
-                </NavLink>
+                </NavLink> */}
               </Menu.Item>
             </SubMenu>
 

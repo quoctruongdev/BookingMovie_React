@@ -12,10 +12,10 @@ function AuthPage(props) {
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setState({
-      ...state, 
+      ...state,
       [name]: value,
     });
-    return <Loader />
+    return <Loader />;
   };
 
   const handleLogin = (event) => {
