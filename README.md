@@ -1,6 +1,5 @@
 ## Link Demo:
-
-https://gp-11-booking-movie.surge.sh/
+https://booking-movie-web.vercel.app/
 
 ---
 
