@@ -71,6 +71,8 @@ function AuthPage(props) {
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-200 text-gray-900"
             />
+            <p>acount-test: admintestnew</p>
+            <p>pass: 123456789</p>
             {renderNoti()}
           </div>
           <button className="block w-full p-3 text-center rounded-sm text- bg-indigo-700   ">

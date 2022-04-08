@@ -22,7 +22,6 @@ export default function EditFilm(props) {
   useEffect(() => {
     const id = props.match.params.id;
     dispatch(actFetchEditMovie(id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const formik = useFormik({
@@ -41,14 +40,17 @@ export default function EditFilm(props) {
       maNhom: "GP11",
     },
     onSubmit: (values) => {
-      console.log("value", values);
       let formData = new FormData();
+      console.log(formData);
+
       for (let key in values) {
         if (key !== "hinhAnh") {
           formData.append(key, values[key]);
+          console.log(formData);
         } else {
           if (values.hinhAnh !== null) {
             formData.append("File", values.hinhAnh, values.hinhAnh.name);
+            console.log(formData);
           }
         }
       }

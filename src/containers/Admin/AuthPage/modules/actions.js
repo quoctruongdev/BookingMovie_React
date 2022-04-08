@@ -46,10 +46,8 @@ export const actLogout = (history) => {
   //xoa localStorage
   localStorage.removeItem("UserAdmin");
   localStorage.removeItem("exp");
-
   //redirect ve trang /auth
   history.replace("/auth");
-
   //clear reducer
   return {
     type: ActionType.AUTH_CLEAR_DATA,

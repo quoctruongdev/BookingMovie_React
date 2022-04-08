@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const TOKEN_CYBERSOFT =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAxNCIsIkhldEhhblN0cmluZyI6IjE4LzAzLzIwMjIiLCJIZXRIYW5UaW1lIjoiMTY0NzU2MTYwMDAwMCIsIm5iZiI6MTYyMTE4NDQwMCwiZXhwIjoxNjQ3NzA5MjAwfQ.Gn_duD0LZ6aamu893NNv17QlXn6HTFtyfWIFAIMBjEM";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAxNCIsIkhldEhhblN0cmluZyI6IjE1LzA0LzIwMjIiLCJIZXRIYW5UaW1lIjoiMTY0OTk4MDgwMDAwMCIsIm5iZiI6MTYyMTE4NDQwMCwiZXhwIjoxNjUwMTI4NDAwfQ.43sCqLD_V6VUJP8qZLQSWO07uCIDI7bS5MGR92deYb8";
 
 const api = axios.create({
   baseURL: "https://movienew.cybersoft.edu.vn/api/",
@@ -24,11 +24,11 @@ api.interceptors.request.use(
   }
 );
 
-const apiFront = axios.create({
+const apiClient = axios.create({
   baseURL: "https://movienew.cybersoft.edu.vn/api/",
 });
 
-apiFront.interceptors.request.use(
+apiClient.interceptors.request.use(
   (config) => {
     config.headers = {
       ...config.headers,
@@ -45,4 +45,4 @@ apiFront.interceptors.request.use(
   }
 );
 
-export { api, apiFront };
+export { api, apiClient };

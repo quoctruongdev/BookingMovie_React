@@ -1,5 +1,5 @@
 import * as ActionType from "./constants";
-import {apiFront} from "../../../../utils/apiUtils";
+import { apiClient } from "../../../../utils/apiUtils";
 
 //Giả sử BE trả về exp time: 3600000 (1 giờ)
 const TIME_EXP = 3600000;
@@ -8,7 +8,7 @@ export const actFetchLogin = (user, history) => {
   return (dispatch) => {
     dispatch(actLoginRequest());
 
-    apiFront
+    apiClient
       .post("QuanLyNguoiDung/DangNhap", user)
       .then((result) => {
         //Check maLoaiNguoiDung
@@ -84,7 +84,6 @@ export const actTryLogin = (history) => {
     dispatch(actLoginSuccess(user));
   };
 };
-
 
 const actLoginRequest = () => {
   return {

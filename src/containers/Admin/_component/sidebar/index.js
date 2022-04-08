@@ -20,21 +20,20 @@ import AdNewFilm from "../../Film/addNewFilm/adnewfilm";
 import AddUser from "../../User/AddUser";
 import EditUser from "../../User/EditUser/EditUser";
 import EditFilm from "../../Film/EditFilm/EditFilm";
+import { actLogout } from "../../AuthPage/modules/actions";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import { Redirect } from "react-router";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 export default function SideBar(props) {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     collapsed: false,
   });
-
-  const logOutUserAdmin = () => {
-    localStorage.removeItem("UserAdmin");
-    localStorage.removeItem("exp");
-    window.location.reload();
-    <Redirect to="/auth" />;
-  };
 
   const onCollapse = (collapsed) => {
     setState({ collapsed });
@@ -65,9 +64,9 @@ export default function SideBar(props) {
                 <NavLink to="/dashboard/user">List User</NavLink>
               </Menu.Item>
               <Menu.Item key="3" icon={<PersonAddIcon />}>
-                {/* <NavLink activeClassName="active" to="/dashboard/adduser">
+                <NavLink activeClassName="active" to="/dashboard/adduser">
                   Add User
-                </NavLink> */}
+                </NavLink>
               </Menu.Item>
             </SubMenu>
 
@@ -110,7 +109,7 @@ export default function SideBar(props) {
                   <Button
                     type="primary"
                     onClick={() => {
-                      logOutUserAdmin();
+                      dispatch(actLogout(history));
                     }}
                     icon={<PoweroffOutlined />}
                   ></Button>

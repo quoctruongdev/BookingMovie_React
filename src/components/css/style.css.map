@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC,GAAG,AAAA,MAAM,CAAC;EACtB,gBAAgB,EAAE,oBAAoB;EACtC,UAAU,EAAE,QAAQ;CACrB;;AACD,AAAA,aAAa,CAAC;EACZ,KAAK,EAAE,eAAe;EACtB,MAAM,EAAE,eAAe;EACvB,OAAO,EAAE,cAAc;CACxB",
+    "sources": [
+        "../BackToTop/style.scss"
+    ],
+    "names": [],
+    "file": "style.css"
+}

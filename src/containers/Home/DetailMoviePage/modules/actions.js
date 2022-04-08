@@ -1,11 +1,11 @@
 import * as ActionType from "./constants";
-import {apiFront} from "../../../../utils/apiUtils";
+import { apiClient } from "../../../../utils/apiUtils";
 
 export const actFetchDetailMovie = (id) => {
   return (dispatch) => {
     dispatch(actDetailMovieRequest());
 
-    apiFront
+    apiClient
       .get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`)
       .then((result) => {
         dispatch(actDetailMovieSuccess(result.data.content));
@@ -13,7 +13,6 @@ export const actFetchDetailMovie = (id) => {
       .catch((error) => {
         dispatch(actDetailMovieFailed(error));
       });
-      
   };
 };
 

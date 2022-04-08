@@ -6,12 +6,12 @@ import { useEffect } from "react";
 import "./style.css";
 
 const contentStyle = {
-  height: "470px",
+  height: "630px",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
   background: `rgb(51, 53, 69)`,
-  backgroundPosition: "center",
+  backgroundPosition: "cover",
   backgroundSize: "100%",
   backgroundRepeat: "no-repeat",
 };

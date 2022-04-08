@@ -1,11 +1,11 @@
 import * as ActionType from "./constants";
-import {apiFront} from "../../../../utils/apiUtils";
+import { apiClient } from "../../../../utils/apiUtils";
 
 export const actFetchSignUp = (user, history) => {
   return (dispatch) => {
     dispatch(actSignUpRequest());
 
-    apiFront
+    apiClient
       .post("QuanLyNguoiDung/DangKy", user)
       .then((result) => {
         history.replace("/login");

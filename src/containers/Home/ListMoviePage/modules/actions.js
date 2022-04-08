@@ -1,10 +1,10 @@
 import * as ActionType from "./constants";
-import { apiFront } from "./../../../../utils/apiUtils";
+import { apiClient } from "./../../../../utils/apiUtils";
 
 export const actFetchListMovie = () => {
   return (dispatch) => {
     dispatch(actListMovieRequest());
-    apiFront
+    apiClient
       .get("QuanLyPhim/LayDanhSachPhim?maNhom=GP11")
       .then((result) => {
         dispatch(actListMovieSuccess(result.data.content));
@@ -18,7 +18,7 @@ export const actFetchListMovie = () => {
 export const actFetchListMovie2 = (tenPhim) => {
   return (dispatch) => {
     dispatch(actListMovieRequest());
-    apiFront
+    apiClient
       .get(`QuanLyPhim/LayDanhSachPhim?maNhom=GP11&tenPhim=${tenPhim}`)
       .then((result) => {
         dispatch(actListMovieSuccess(result.data.content));

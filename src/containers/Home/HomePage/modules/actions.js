@@ -1,10 +1,10 @@
 import * as ActionType from "./constants";
-import { apiFront } from "../../../../utils/apiUtils";
+import { apiClient } from "../../../../utils/apiUtils";
 
 export const actFetchHeThongRap = () => {
   return (dispatch) => {
     dispatch(actHeThongRapRequest());
-    apiFront
+    apiClient
       .get(`QuanLyRap/LayThongTinHeThongRap`)
       .then((result) => {
         dispatch(actHeThongRapSuccess(result.data.content));
@@ -39,12 +39,14 @@ export const actFetchCumRap2 = (dataHeThongRap) => {
   return (dispatch) => {
     dataHeThongRap?.map((heThongRap) => {
       dispatch(actCumRapRequest(heThongRap.maHeThongRap));
-      apiFront
+      apiClient
         .get(
           `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${heThongRap.maHeThongRap}`
         )
         .then((result) => {
-          dispatch(actCumRapSuccess(heThongRap.maHeThongRap, result.data.content));
+          dispatch(
+            actCumRapSuccess(heThongRap.maHeThongRap, result.data.content)
+          );
         })
         .catch((error) => {
           dispatch(actCumRapFailed(error));
@@ -57,7 +59,7 @@ export const actFetchCumRap = (maHeThongRap) => {
   return (dispatch) => {
     dispatch(actCumRapRequest(maHeThongRap));
 
-    apiFront
+    apiClient
       .get(
         `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
       )

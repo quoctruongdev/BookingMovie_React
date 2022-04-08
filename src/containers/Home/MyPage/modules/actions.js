@@ -1,11 +1,11 @@
 import * as ActionType from "./constants";
-import { apiFront } from "../../../../utils/apiUtils";
+import { apiClient } from "../../../../utils/apiUtils";
 
 export const actFetchUserInfo = () => {
   return (dispatch) => {
     dispatch(actUserInfoRequest());
 
-    apiFront
+    apiClient
       .post("QuanLyNguoiDung/ThongTinTaiKhoan")
       .then((result) => {
         dispatch(actUserInfoSuccess(result.data.content));
@@ -40,7 +40,7 @@ export const actFetchUpdateUserInfo = (user) => {
   return (dispatch) => {
     dispatch(actUpdateUserInfoRequest());
 
-    apiFront
+    apiClient
       .put("QuanLyNguoiDung/CapNhatThongTinNguoiDung", user)
       .then((result) => {
         dispatch(actUpdateUserInfoSuccess(result.data.content));

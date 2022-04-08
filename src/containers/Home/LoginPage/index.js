@@ -139,7 +139,22 @@ class LoginPage extends Component {
                 ""
               )}
             </li>
+            <li>
+              {errorsInput.matKhau ? (
+                <div className="show-error">{errorsInput.matKhau}</div>
+              ) : (
+                ""
+              )}
+            </li>
           </ul>
+          <div
+            style={{
+              paddingLeft: "30px",
+            }}
+          >
+            <p>AcountTest: acounttestclient</p>
+            <p>Password: 12345678 </p>
+          </div>
         </fieldset>
         <button
           className="login-form-btn"

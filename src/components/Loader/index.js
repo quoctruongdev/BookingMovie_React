@@ -4,9 +4,11 @@ import "./style.css";
 export default class Loader extends Component {
   render() {
     return (
-      <div className="loading">
-        <div></div>
-        <div></div>
+      <div className="Container">
+        <div className="loading">
+          <div></div>
+          <div></div>
+        </div>
       </div>
     );
   }
